@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Mega Bank</title>
+    <link rel="stylesheet" href="/Assets/app.css" type="text/css" />
+    <script src="/Libs/jquery-3.1.1.js"></script>
+    <script src="/Libs/react-15.4.1.js"></script>
+    <script src="/Libs/react-dom-15.4.1.js"></script>
+    <script src="/Libs/mvc-router-1.0.js"></script>
+    <script src="/Libs/require.js"></script>
+    <script>
+        $(function () {
+            require.config({
+                paths: {
+                    BankApp: '/Generated/app'
+                }
+            });
+            require(['BankApp'], function (module) {
+                new module.BankApp(document.getElementById('app-body'));
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="app-body"></div>
+</body>
+</html>

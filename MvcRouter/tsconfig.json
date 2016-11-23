@@ -1,0 +1,7 @@
+﻿{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "out": "../dist/mvc-router-1.0.js",
+    "declaration": true
+  }
+}

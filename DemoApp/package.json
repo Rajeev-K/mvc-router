@@ -1,0 +1,19 @@
+{
+  "name": "MvcRouter",
+  "version": "1.0.0",
+  "description": "MVC router for JavaScript Web application",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/Rajeev-K/mvc-router.git"
+  },
+  "author": "Rajeev-K",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.3.1"
+  }
+}

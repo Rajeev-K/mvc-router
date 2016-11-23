@@ -1,0 +1,233 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+}
+
+h1, h2, h3, h4 {
+  color: #404040;
+}
+
+a {
+  color: #0769ad;
+}
+
+button {
+  font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  height: 40px;
+  min-width: 120px;
+  border: 0;
+  background-color: #ddd;
+}
+
+button:hover {
+  background-color: #eaeaea;
+}
+
+button.default-button {
+  background-color: #0072c6;
+  color: white;
+}
+
+button.default-button:hover {
+  background-color: #008ff9;
+}
+
+.button-bar {
+  margin-top: 15px;
+}
+
+.button-bar button {
+  margin-right: 15px;
+}
+
+input[type="text"], input[type="password"] {
+  font-size: 14px;
+}
+
+.accounts-table {
+  border-collapse: collapse;
+}
+
+.accounts-table th {
+  color: #404040;
+  text-align: left;
+}
+
+.accounts-table td:nth-child(1) {
+  min-width: 350px;
+}
+
+.accounts-table td:nth-child(2) {
+  text-align: right;
+}
+
+.accounts-table th, .accounts-table td {
+  padding: 8px 0 8px 0;
+}
+
+.accounts-table tr {
+  border-bottom: solid 1px #bbb;
+}
+
+.accounts-table a {
+  text-decoration: none;
+}
+
+.accounts-table a:hover {
+  text-decoration: underline;
+}
+
+.header {
+  position: fixed;
+  width: 100%;
+  box-sizing: border-box;
+  height: 60px;
+  background-color: #0072c6;
+  color: white;
+  z-index: 900;
+}
+
+.header .company-name {
+  display: inline-block;
+  font-size: 36px;
+  font-style: italic;
+  font-weight: bold;
+  padding: 2px 20px 8px 20px;
+  width: 250px;
+  height: 60px;
+  background-color: #0069b7;
+  border-right: solid 1px #0063ad;
+  box-sizing: border-box;
+}
+
+.header .rhs {
+  float: right;
+  margin: 20px 15px 0 0;
+}
+
+.header .sign-out {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.header .goto {
+  display: inline-block;
+  cursor: pointer;
+  margin-right: 90px;
+}
+
+.header .goto::after {
+  content: '';
+  display: inline-block;
+  position: relative;
+  left: 7px;
+  top: 0px;
+  background-image: url(caretdown.png);
+  width: 8px;
+  height: 8px;
+}
+
+.transaction-page .input-panel {
+  margin-top: 12px;
+}
+
+.transaction-page .input-panel input {
+  border: solid 1px #999;
+  padding: 3px;
+}
+
+.support-page textarea {
+  margin-top: 8px;
+  margin-bottom: 20px;
+  border: solid 1px #0072c6;
+  overflow: hidden;
+}
+
+.leftnav {
+  position: fixed;
+  display: inline-block;
+  width: 250px;
+  height: 100%;
+  margin-top: 60px;
+  padding-top: 30px;
+  box-sizing: border-box;
+  background-color: #f3f3f3;
+  border-right: solid 1px #e7e7e7;
+}
+
+.leftnav div {
+  margin: 10px 0 20px 20px;
+}
+
+.leftnav a {
+  font-size: 18px;
+  text-decoration: none;
+}
+
+.leftnav a:hover {
+  text-decoration: underline;
+}
+
+.page-container {
+  margin-top: 60px;
+  margin-left: 250px;
+  padding-left: 40px;
+  display: inline-block;
+}
+
+.dropdown-menu {
+  position: absolute;
+  background-color: white;
+  cursor: default;
+  box-shadow: 0px 1px 3px #666;
+  outline: 0;
+  z-index: 901;
+  padding: 7px 0 7px 0;
+}
+
+.dropdown-menu .menu-item {
+  padding: 3px 16px 4px 16px;
+}
+
+.dropdown-menu .menu-item.highlight {
+  color: white;
+  background-color: #008ff9;
+}
+
+.dialog-mask {
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.dialog {
+  position: absolute;
+  border: 1px solid #999;
+  padding: 10px;
+  background-color: white;
+}
+
+.dialog .button-panel {
+  margin-top: 25px;
+  text-align: right;
+}
+
+.dialog .button-panel button {
+  margin-left: 7px;
+}
+
+.message-box {
+  width: 350px;
+}
+
+.change-password input[type="password"] {
+  border: 1px solid #999;
+  margin-bottom: 5px;
+  padding: 5px;
+  width: 330px;
+}

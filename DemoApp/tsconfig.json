@@ -1,0 +1,9 @@
+﻿{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "module": "amd",
+    "out": "Generated/app.js",
+    "sourceMap": true,
+    "jsx": "react"
+  }
+}

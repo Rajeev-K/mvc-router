@@ -80,9 +80,9 @@ declare namespace MvcRouter {
         /**
          * Replaces query parameters in the browser's location without reloading the page.
          * @param query new query parameters
-         * @param newHistoryEntry if true creates a new history entry instead of modifying the current one. Only works when useHistory option is set.
+         * @param newHistoryEntry if true creates a new history entry instead of modifying the current one.
          */
-        replaceQueryParameters(query: QueryParams, newHistoryEntry: boolean): void;
+        replaceQueryParameters(query: QueryParams, newHistoryEntry?: boolean): void;
         /** Constructs the query string from the supplied name value pairs. */
         private constructQueryString(query);
         /** Parses the query string. */

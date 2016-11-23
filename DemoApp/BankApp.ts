@@ -12,7 +12,7 @@ export class BankApp extends MvcRouter.App {
             appBody: appBody
         });
 
-        var router = this.getRouter();
+        const router = this.getRouter();
         router.addRoute("/", HomeController);
         router.addRoute("/account/:type", AccountController);
         router.addRoute("/account/:type/:mode", TransactionController);

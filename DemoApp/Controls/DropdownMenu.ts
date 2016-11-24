@@ -60,10 +60,10 @@ export class DropdownMenu {
                 const $highlighted = this.$el.find('.' + this.highlightCssClass);
                 const index = $items.index($highlighted);
                 let newIndex;
-                if (ev.which == KeyCodes.UpArrow)
-                    newIndex = (index == -1 || index == 0) ? $items.length - 1 : index - 1;
+                if (ev.which === KeyCodes.UpArrow)
+                    newIndex = (index === -1 || index === 0) ? $items.length - 1 : index - 1;
                 else
-                    newIndex = (index == -1 || index == $items.length - 1) ? 0 : index + 1;
+                    newIndex = (index === -1 || index === $items.length - 1) ? 0 : index + 1;
                 $highlighted.removeClass(this.highlightCssClass);
                 $items.eq(newIndex).addClass(this.highlightCssClass);
                 break;
@@ -74,7 +74,7 @@ export class DropdownMenu {
 
     private onItemSelected($item: JQuery): void {
         const index = this.$el.find('.' + this.menuItemCssClass).index($item);
-        if (index != -1) {
+        if (index !== -1) {
             this.itemSelectedEvent.trigger(this, { selectedItemIndex: index });
             this.close();
         }

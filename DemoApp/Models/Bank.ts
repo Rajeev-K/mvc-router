@@ -17,7 +17,7 @@ export class Bank {
     }
 
     public getAccount(accountType: number): Account {
-        if (accountType == AccountType.Checking) {
+        if (accountType === AccountType.Checking) {
             return this.checkingAccount;
         }
         else {

@@ -329,7 +329,7 @@ var MvcRouter;
          * @path path to the page for example "/bank/deposits" will set the location to http://localhost/bank/deposits
          */
         App.prototype.navigate = function (path, queryParams) {
-            if (!path || path[0] != '/') {
+            if (!path || path[0] !== '/') {
                 throw new Error("Invalid path");
             }
             this.router.navigate(path, queryParams);

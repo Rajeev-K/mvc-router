@@ -22,7 +22,7 @@ namespace MvcRouter {
             App.instance = this;
             this.options = Utils.extend({}, DefaultAppOptions, options);
             if (!this.options.appBody) {
-                let el = document.createElement('div');
+                const el = document.createElement('div');
                 document.body.appendChild(el);
                 this.options.appBody = el;
             }
@@ -51,7 +51,7 @@ namespace MvcRouter {
          * @path path to the page for example "/bank/deposits" will set the location to http://localhost/bank/deposits
          */
         public navigate(path: string, queryParams?: QueryParams): void {
-            if (!path || path[0] != '/') {
+            if (!path || path[0] !== '/') {
                 throw new Error("Invalid path");
             }
             this.router.navigate(path, queryParams);
@@ -64,10 +64,10 @@ namespace MvcRouter {
 
         /** Gets the path to the currently displayed page. Returned string does not include application path. */
         public getCurrentPagePath(): string {
-            let fullPath = window.location.pathname;
-            let len = this.options.appPath.length;
+            const fullPath = window.location.pathname;
+            const len = this.options.appPath.length;
             if (fullPath.substr(0, len) === this.options.appPath) {
-                let pagePath = fullPath.substr(len);
+                const pagePath = fullPath.substr(len);
                 if (!pagePath.length) {
                     return '/';
                 }

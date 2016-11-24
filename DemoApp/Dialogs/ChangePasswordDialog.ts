@@ -20,15 +20,10 @@ export class ChangePasswordDialog extends DialogBase {
     }
 
     protected render(): void {
-        var element = React.createElement(ChangePasswordPanel, {});
+        const element = React.createElement(ChangePasswordPanel, {});
         ReactDOM.render(element, this.$el.get(0), () => {
             this.init();
         });
-    }
-
-    protected init(): void {
-        // Call base class method to complete initialization.
-        super.init();
     }
 
     public onOK(): void {

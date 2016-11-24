@@ -9,12 +9,12 @@ export interface HomePageState {
 
 export class HomePage extends React.Component<HomePageProps, HomePageState> {
     render() {
-        var rows = [];
-        for (var i = 0; i < this.props.accounts.length; i++) {
+        const rows = [];
+        for (const account of this.props.accounts) {
             rows.push(
-                <tr key={this.props.accounts[i].getAccountType()}>
-                    <td><a className="appnav" href={"/account/" + this.props.accounts[i].getAccountType()}>{this.props.accounts[i].getName()}</a></td>
-                    <td>{this.props.accounts[i].getBalance()}</td>
+                <tr key={account.getAccountType()}>
+                    <td><a className="appnav" href={`/account/${account.getAccountType()}`}>{account.getName()}</a></td>
+                    <td>{account.getBalance()}</td>
                 </tr>
             );
         }

@@ -63,8 +63,8 @@ export class DialogBase {
     }
 
     private centerDialog(): void {
-        var t = ($(window).height() - this.$el.height()) / 3;
-        var l = ($(window).width() - this.$el.width()) / 2;
+        let t = ($(window).height() - this.$el.height()) / 3;
+        let l = ($(window).width() - this.$el.width()) / 2;
         t = Math.max(0, t);
         l = Math.max(0, l);
         this.$el.css({ top: t + 'px', left: l + 'px' });

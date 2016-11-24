@@ -48,9 +48,9 @@ export class ControllerBase extends MvcRouter.Controller {
         // Display commands in the menu
         const commands = this.getCommands();
         const menu = new DropdownMenu($menu, { items: commands });
-        menu.itemSelectedEvent.addListener((sender, ev) => {
+        menu.itemSelectedEvent.addListener((sender, e) => {
             // Execute the selected command
-            commands[ev.selectedItemIndex].action();
+            commands[e.selectedItemIndex].action();
         });
     }
 

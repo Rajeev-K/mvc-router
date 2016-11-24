@@ -8,7 +8,7 @@ export class Account {
     private balance: number;
 
     constructor(private accountType: AccountType) {
-        if (accountType == AccountType.Checking) {
+        if (accountType === AccountType.Checking) {
             this.name = "Fee Maximizer Checking";
             this.balance = parseInt(Storage.load(AccountType[this.accountType]) || '1000', 10);
         }

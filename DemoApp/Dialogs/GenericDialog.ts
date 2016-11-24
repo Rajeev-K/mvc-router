@@ -20,11 +20,6 @@ export class GenericDialog<P> extends DialogBase {
             this.init();
         });
     }
-
-    protected init(): void {
-        // Call base class method to complete initialization.
-        super.init();
-    }
 }
 
 export interface GenericDialogOptions {

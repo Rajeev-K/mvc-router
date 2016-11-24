@@ -20,11 +20,18 @@ The application object is a singleton object that inherits from `MvcRouter.App` 
 The Application object sets up the routes of the application by mapping URL paths to Controller classes, then calls the `load` method of the base class:
 
 ```typescript
+class MyApp extends MvcRouter.App {
+    constructor() {
+        super();
+
         const router = this.getRouter();
         router.addRoute("/", HomeController);
-        router.addRoute("/account", AccountController);
         router.addRoute("/product", ProductController);
+        router.addRoute("/account", AccountController);
+
         this.load();
+    }
+}
 ```
 Note that the second parameter to the `addRoute()` method is not an instance of a controller, but the controller class. 
 
@@ -55,6 +62,22 @@ MVC Router is independent of the technology used to implement your View layer. Y
 Controllers fetch data to be displayed, making ajax calls if necessary, render the appropriate View objects, and set up event handlers in order to handle user actions. In the course of handling user actions, controllers may cause the application to navigate to other pages. Controllers also handle modifying and persisting application state, making ajax calls if necessary.
 
 Controller objects inherit from `MvcRouter.Controller`. Each URL path in your app will have a corresponding controller. MVC Router creates a new instance of the controller class each time a path is loaded. Because of this, data that must live longer than the page must be stored in your Application object, not in the controller.
+
+In the simple example below, the controller renders the page using jQuery. (You may want to use more modern libraries such as React.js instead, to implement the View layer.)
+
+```typescript
+class ProductController extends MvcRouter.Controller {
+    constructor(private app: MyApp) {
+        super();
+    }    
+
+    public load(params: MvcRouter.QueryParams) {
+        super.load(params);
+        const productPageTemplate = $("#product-page").html();
+        $(this.app.getAppBody()).empty().html(productPageTemplate);
+    }
+}
+```
 
 You can have a hierarchy of controllers, with parts that are common to all pages rendered by the base controller.
 

@@ -68,7 +68,7 @@ namespace MvcRouter {
             const len = this.options.appPath.length;
             if (fullPath.substr(0, len) === this.options.appPath) {
                 const pagePath = fullPath.substr(len);
-                if (!pagePath.length) {
+                if (!pagePath) {
                     return '/';
                 }
                 if (pagePath[0] === '/') {

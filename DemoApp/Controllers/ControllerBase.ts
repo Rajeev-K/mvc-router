@@ -31,7 +31,7 @@ export class ControllerBase extends MvcRouter.Controller {
 
     private attachMasterPageEventHandlers(): void {
         const $appBody = $(this.app.getAppBody());
-        $appBody.on('click', '.goto', ev => this.onGotoClicked(ev));
+        $appBody.on('click', '.services', ev => this.onServicesClicked(ev));
         $appBody.on('click', '.sign-out', () => this.onSignOutClicked());
     }
 
@@ -39,11 +39,11 @@ export class ControllerBase extends MvcRouter.Controller {
     protected loadPage(params: MvcRouter.QueryParams): void {
     }
 
-    private onGotoClicked(ev: JQueryEventObject): void {
+    private onServicesClicked(ev: JQueryEventObject): void {
         // Add menu to DOM and position it
         const $menu = $("<div></div>").appendTo(this.app.getAppBody());
-        const gotoOffset = $(ev.target).offset();
-        $menu.css({ left: gotoOffset.left, top: (gotoOffset.top + 32) });
+        const servicesOffset = $(ev.target).offset();
+        $menu.css({ left: servicesOffset.left, top: (servicesOffset.top + 32) });
 
         // Display commands in the menu
         const commands = this.getCommands();

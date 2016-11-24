@@ -10,7 +10,7 @@ MVC is a common and familiar pattern used by many frameworks, for building Web a
 A typical MVC application has the following parts:
 - The Application object holds application state and sets up routes.
 - Model objects encapsulate application data.
-- View objects displays application data.
+- View objects display application data.
 - Controller objects handle data retrieval and persistence, mediates between model and view layers, and handles control flow.
 
 ## Application Object
@@ -73,7 +73,7 @@ class ProductController extends MvcRouter.Controller {
 
     public load(params: MvcRouter.QueryParams) {
         super.load(params);
-        const productPageTemplate = $("#product-page").html();
+        const productPageTemplate = $("#product-page-template").html();
         $(this.app.getAppBody()).empty().html(productPageTemplate);
     }
 }

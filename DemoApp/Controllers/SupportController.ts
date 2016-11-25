@@ -14,8 +14,12 @@ export class SupportController extends ControllerBase {
         var element = React.createElement(SupportPage, {});
         ReactDOM.render(element, this.$pageContainer.get(0), () => {
             this.$textArea = this.$pageContainer.find('textarea');
-            this.$pageContainer.on('click', '.send-button', () => this.onSendButtonClicked());
+            this.attachPageEventHandlers();
         });
+    }
+
+    private attachPageEventHandlers(): void {
+        this.$pageContainer.on('click', '.send-button', () => this.onSendButtonClicked());
     }
 
     private onSendButtonClicked(): void {

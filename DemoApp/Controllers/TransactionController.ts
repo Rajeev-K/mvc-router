@@ -1,7 +1,8 @@
 ﻿import { ControllerBase } from "./ControllerBase";
-import { Account } from "../Models/Account";
+import { AccountType, Account } from "../Models/Account";
 import { BankApp } from "../BankApp";
 import { MessageBox } from "../Dialogs/MessageBox";
+import * as Storage from "../Utils/Storage";
 import { TransactionPageProps, TransactionPage, TransactionPageState, TransactionPageLabels } from "../Views/TransactionPage";
 
 export class TransactionController extends ControllerBase {
@@ -50,6 +51,9 @@ export class TransactionController extends ControllerBase {
         const amountStr = this.$pageContainer.find('.amount-input').val();
         const amount = parseInt(amountStr, 10);
         this.account.depositMoney(amount);
+
+        Storage.store(AccountType[this.accountType], this.account.getBalance().toString());
+
         this.component.setState({ balance: this.account.getBalance() });
         MessageBox.show("Amount deposited.").done(() => {
             this.app.navigate("/");
@@ -61,6 +65,9 @@ export class TransactionController extends ControllerBase {
         const amount = parseInt(amountStr, 10);
         try {
             this.account.withdrawMoney(amount);
+
+            Storage.store(AccountType[this.accountType], this.account.getBalance().toString());
+
             this.component.setState({ balance: this.account.getBalance() });
             MessageBox.show("Amount withdrawn.").done(() => {
                 this.app.navigate("/");

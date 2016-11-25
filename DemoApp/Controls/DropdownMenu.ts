@@ -21,7 +21,7 @@ export class DropdownMenu {
         this.ops = $.extend({}, DefaultDropdownMenuOptions, options);
         this.render();
         this.$el.focus();
-        this.handleEvents();
+        this.attachEventHandlers();
     }
 
     private render(): void {
@@ -33,7 +33,7 @@ export class DropdownMenu {
         }
     }
 
-    private handleEvents(): void {
+    private attachEventHandlers(): void {
         this.$el.on('blur', () => this.close());
         this.$el.on('mouseover', '.' + this.menuItemCssClass, ev => this.onMouseOverItem(ev));
         this.$el.on('mouseout', ev => this.$el.find('.' + this.highlightCssClass).removeClass(this.highlightCssClass));

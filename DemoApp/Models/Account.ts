@@ -1,21 +1,12 @@
-﻿import * as Storage from "./Storage";
-
-export enum AccountType { Checking, Savings };
+﻿export enum AccountType { Checking, Savings };
 
 /** Represents a bank account */
 export class Account {
     private name: string;
-    private balance: number;
 
-    constructor(private accountType: AccountType) {
-        if (accountType === AccountType.Checking) {
-            this.name = "Fee Maximizer Checking";
-            this.balance = parseInt(Storage.load(AccountType[this.accountType]) || '1000', 10);
-        }
-        else {
-            this.name = "Interest Free Savings";
-            this.balance = parseInt(Storage.load(AccountType[this.accountType]) || '5000', 10);
-        }
+    constructor(private accountType: AccountType, private balance: number) {
+        this.name = accountType === AccountType.Checking ? "Fee Maximizer Checking" : "Interest Free Savings";
+        this.balance = balance;
     }
 
     public getAccountType(): AccountType {
@@ -33,7 +24,6 @@ export class Account {
     public depositMoney(amount: number): void {
         if (!isNaN(amount) && amount > 0) {
             this.balance = this.balance + amount;
-            Storage.store(AccountType[this.accountType], this.balance.toString());
         }
     }
 
@@ -43,7 +33,6 @@ export class Account {
                 throw new Error("Amount exceeds balance");
             }
             this.balance = this.balance - amount;
-            Storage.store(AccountType[this.accountType], this.balance.toString());
         }
     }
 }

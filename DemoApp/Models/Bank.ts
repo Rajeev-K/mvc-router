@@ -4,9 +4,9 @@ export class Bank {
     private checkingAccount: Account;
     private savingsAccount: Account;
 
-    constructor() {
-        this.checkingAccount = new Account(AccountType.Checking);
-        this.savingsAccount = new Account(AccountType.Savings);
+    constructor(checkingAccountBalance: number, savingsAccountBalance: number) {
+        this.checkingAccount = new Account(AccountType.Checking, checkingAccountBalance);
+        this.savingsAccount = new Account(AccountType.Savings, savingsAccountBalance);
     }
 
     public getAccounts(): Account[] {

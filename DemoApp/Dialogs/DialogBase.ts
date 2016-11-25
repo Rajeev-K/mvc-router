@@ -4,10 +4,10 @@
 export class DialogBase {
     protected $el: JQuery;
     private $mask: JQuery;
-    private dfd = $.Deferred();
     private $okButton: JQuery;
     private $cancelButton: JQuery;
     private $closeButton: JQuery;
+    private dfd = $.Deferred();
 
     constructor() {
         this.$mask = $('<div class="dialog-mask"></div>').appendTo(document.body);
@@ -15,7 +15,7 @@ export class DialogBase {
     }
 
     /**
-     *  Render the contents of the dialog.
+     *  Render the contents of the dialog. Subclasses should override this method.
      *  Note: After the dialog elements have been added to the DOM you must call the init() method.
      */
     protected render(): void {
@@ -26,11 +26,11 @@ export class DialogBase {
         this.$cancelButton = this.$el.find(".cancel-button");
         this.$closeButton = this.$el.find(".close-button");
         this.centerDialog();
-        this.handleEvents();
+        this.attachEventHandlers();
         window.setTimeout(() => this.$okButton.focus(), 0);
     }
 
-    protected handleEvents(): void {
+    protected attachEventHandlers(): void {
         this.$okButton.click(() => this.onOK());
         this.$cancelButton.click(() => this.onCancel());
         this.$closeButton.click(() => this.onCancel());
@@ -67,7 +67,7 @@ export class DialogBase {
         let l = ($(window).width() - this.$el.width()) / 2;
         t = Math.max(0, t);
         l = Math.max(0, l);
-        this.$el.css({ top: t + 'px', left: l + 'px' });
+        this.$el.css({ top: t, left: l });
     }
 
     public showDialog(): JQueryPromise<any> {

@@ -89,3 +89,7 @@ If `appnav` is specified then MVC Router will use HTML5 pushState API to perform
 
 - You can also programmatically navigate to another page by calling `this.app.navigate('/new/path')` in your controller. Internally, MVC Router uses HTML5 pushState API to perform the navigation.
 
+# Demo App
+Included demo application has a master page that includes a top bar and left panel, dropdown menu, dialogs and other goodies.
+
+![Demo App](/images/screenshot.png?raw=true "Screenshot")

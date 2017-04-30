@@ -21,7 +21,6 @@
   <ItemGroup>
     <TypeScriptCompile Include="App.ts" />
     <TypeScriptCompile Include="Controller.ts" />
-    <TypeScriptCompile Include="Event.ts" />
     <TypeScriptCompile Include="Router.ts" />
     <TypeScriptCompile Include="Utils.ts" />
   </ItemGroup>

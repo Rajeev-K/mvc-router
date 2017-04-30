@@ -152,22 +152,3 @@ declare namespace MvcRouter {
         appBody?: HTMLElement;
     }
 }
-declare namespace MvcRouter {
-    /**
-     * Your model objects and your custom controls can implement events to let other parts of the
-     * application know that something has happened.
-     */
-    class Event<T1, T2 extends EventArgs> {
-        private listeners;
-        trigger(sender: T1, eventArgs: T2): any;
-        addListener(listener: Listener<T1, T2>): void;
-        removeListener(listener: Listener<T1, T2>): void;
-    }
-    type Listener<T1, T2> = (sender: T1, eventArgs: T2) => void;
-    class EventArgs {
-        static Empty: EventArgs;
-    }
-    class PropertyChangedEventArgs extends EventArgs {
-        propertyName: string;
-    }
-}

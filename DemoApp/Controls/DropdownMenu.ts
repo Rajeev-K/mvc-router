@@ -2,9 +2,6 @@
 import { DropdownMenuPanel } from "../Views/DropdownMenu";
 
 export class DropdownMenu {
-    // Events
-    public itemSelectedEvent = new MvcRouter.Event<DropdownMenu, MenuItemSelectedEventArgs>();
-
     // Css classes
     private menuCssClass = "dropdown-menu";
     private menuItemCssClass = "menu-item";
@@ -75,7 +72,12 @@ export class DropdownMenu {
     private onItemSelected($item: JQuery): void {
         const index = this.$el.find('.' + this.menuItemCssClass).index($item);
         if (index !== -1) {
-            this.itemSelectedEvent.trigger(this, { selectedItemIndex: index });
+            const itemSelectedEvent = new CustomEvent('ItemSelected', {
+                detail: {
+                    'selectedItemIndex': index
+                }
+            });
+            this.$el.get(0).dispatchEvent(itemSelectedEvent);
             this.close();
         }
     }
@@ -93,7 +95,3 @@ export interface DropdownMenuOptions {
 export const DefaultDropdownMenuOptions: DropdownMenuOptions = {
     items: null
 };
-
-export class MenuItemSelectedEventArgs extends MvcRouter.EventArgs {
-    public selectedItemIndex: number;
-}

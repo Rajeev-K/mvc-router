@@ -55,7 +55,7 @@ var MvcRouter;
     var PageNotFoundController = (function (_super) {
         __extends(PageNotFoundController, _super);
         function PageNotFoundController() {
-            _super.apply(this, arguments);
+            return _super !== null && _super.apply(this, arguments) || this;
         }
         PageNotFoundController.prototype.load = function (params) {
             MvcRouter.App.getInstance().getAppBody().innerHTML = '<div class="page-not-found">Page not found</div>';
@@ -303,7 +303,7 @@ var MvcRouter;
                 throw new Error("App instance exists; use getInstance() instead.");
             }
             App.instance = this;
-            this.options = MvcRouter.Utils.extend({}, DefaultAppOptions, options);
+            this.options = MvcRouter.Utils.extend({}, DefaultAppSettings, options);
             if (!this.options.appBody) {
                 var el = document.createElement('div');
                 document.body.appendChild(el);
@@ -356,7 +356,7 @@ var MvcRouter;
         return App;
     }());
     MvcRouter.App = App;
-    var DefaultAppOptions = {
+    var DefaultAppSettings = {
         appPath: '',
         appBody: null
     };
@@ -391,14 +391,14 @@ var MvcRouter;
     var EventArgs = (function () {
         function EventArgs() {
         }
-        EventArgs.Empty = new EventArgs();
         return EventArgs;
     }());
+    EventArgs.Empty = new EventArgs();
     MvcRouter.EventArgs = EventArgs;
     var PropertyChangedEventArgs = (function (_super) {
         __extends(PropertyChangedEventArgs, _super);
         function PropertyChangedEventArgs() {
-            _super.apply(this, arguments);
+            return _super !== null && _super.apply(this, arguments) || this;
         }
         return PropertyChangedEventArgs;
     }(EventArgs));

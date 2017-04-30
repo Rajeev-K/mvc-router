@@ -20,7 +20,7 @@ namespace MvcRouter {
                 throw new Error("App instance exists; use getInstance() instead.");
             }
             App.instance = this;
-            this.options = Utils.extend({}, DefaultAppOptions, options);
+            this.options = Utils.extend({}, DefaultAppSettings, options);
             if (!this.options.appBody) {
                 const el = document.createElement('div');
                 document.body.appendChild(el);
@@ -86,7 +86,7 @@ namespace MvcRouter {
         appBody?: HTMLElement;
     }
 
-    const DefaultAppOptions: AppSettings = {
+    const DefaultAppSettings: AppSettings = {
         appPath: '',
         appBody: null
     };

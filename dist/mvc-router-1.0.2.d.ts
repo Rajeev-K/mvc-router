@@ -83,6 +83,12 @@ declare namespace MvcRouter {
          * @param newHistoryEntry if true creates a new history entry instead of modifying the current one.
          */
         replaceQueryParameters(query: QueryParams, newHistoryEntry?: boolean): void;
+        /**
+         * Sets the fragment portion of the current URL, without reloading the page.
+         * @param fragment New fragment, which must start with a '#' character.
+         */
+        setHash(hash: string): void;
+        getHash(): string;
         /** Constructs the query string from the supplied name value pairs. */
         private constructQueryString(query);
         /** Parses the query string. */

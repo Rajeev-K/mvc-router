@@ -17,6 +17,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <ItemGroup>
     <Content Include="Assets\caretdown.png" />
@@ -30,7 +31,7 @@
       <DependentUpon>app.scss</DependentUpon>
     </Content>
     <TypeScriptCompile Include="Dialogs\GenericDialog.ts" />
-    <TypeScriptCompile Include="Libs\mvc-router-1.0.1.d.ts" />
+    <TypeScriptCompile Include="Libs\mvc-router-1.0.2.d.ts" />
     <TypeScriptCompile Include="Utils\Storage.ts" />
     <TypeScriptCompile Include="typings\react\react-dom.d.ts" />
     <TypeScriptCompile Include="typings\react\react-global.d.ts" />
@@ -40,7 +41,7 @@
     <TypeScriptCompile Include="Views\ChangePassword.tsx" />
     <TypeScriptCompile Include="Views\MasterPage.tsx" />
     <TypeScriptCompile Include="Views\TransactionPage.tsx" />
-    <Content Include="Libs\mvc-router-1.0.1.js" />
+    <Content Include="Libs\mvc-router-1.0.2.js" />
     <Content Include="Libs\polyfills.js" />
     <Content Include="Libs\react-15.4.1.js" />
     <Content Include="Libs\react-dom-15.4.1.js" />

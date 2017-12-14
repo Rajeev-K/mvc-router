@@ -187,6 +187,17 @@ var MvcRouter;
             else
                 history.replaceState({}, null, this.app.getAppPath() + url);
         };
+        /**
+         * Sets the fragment portion of the current URL, without reloading the page.
+         * @param fragment New fragment, which must start with a '#' character.
+         */
+        Router.prototype.setHash = function (hash) {
+            if (hash && hash[0] === '#')
+                window.history.replaceState({}, null, hash);
+        };
+        Router.prototype.getHash = function () {
+            return window.location.hash;
+        };
         /** Constructs the query string from the supplied name value pairs. */
         Router.prototype.constructQueryString = function (query) {
             var q = [];

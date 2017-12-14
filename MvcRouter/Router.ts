@@ -139,6 +139,19 @@ namespace MvcRouter {
                 history.replaceState({}, null, this.app.getAppPath() + url);
         }
 
+        /**
+         * Sets the fragment portion of the current URL, without reloading the page.
+         * @param fragment New fragment, which must start with a '#' character.
+         */
+        public setHash(hash: string): void {
+            if (hash && hash[0] === '#')
+                window.history.replaceState({}, null, hash);
+        }
+
+        public getHash(): string {
+            return window.location.hash;
+        }
+
         /** Constructs the query string from the supplied name value pairs. */
         private constructQueryString(query: QueryParams): string {
             const q = [];

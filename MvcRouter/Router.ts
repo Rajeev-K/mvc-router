@@ -61,7 +61,7 @@ namespace MvcRouter {
                     for (i = 0; i < routeSegments.length; i++) {
                         if (routeSegments[i][0] === ':') {
                             const name = routeSegments[i].substring(1);
-                            queryParms[name] = pathSegments[i];
+                            queryParms[name] = decodeURIComponent(pathSegments[i]);
                         }
                         else if (routeSegments[i] !== pathSegments[i]) {
                             break;

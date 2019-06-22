@@ -11,7 +11,7 @@ export function getOffset(el: HTMLElement): { left: number, top: number } {
 }
 
 /**
- * Checks if supplied element is visible, based on its (and its parents') style settings.
+ * Checks if supplied element is visible, based on its (and its ancestors') style settings.
  */
 export function isVisible(el: HTMLElement): boolean {
     if (!el) {

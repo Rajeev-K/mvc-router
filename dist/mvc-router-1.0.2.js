@@ -11,6 +11,17 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 /*! repo location: https://github.com/Rajeev-K/mvc-router */
 var MvcRouter;
 (function (MvcRouter) {
@@ -141,7 +152,7 @@ var MvcRouter;
             var _this = this;
             var result = this.parseLocation();
             var _a = this.resolvePath(result.path), controllerClass = _a.controllerClass, queryParams = _a.queryParams;
-            queryParams = MvcRouter.Utils.extend({}, result.query, queryParams);
+            queryParams = __assign({}, result.query, queryParams);
             if (!controllerClass && this.resolver && result.path) {
                 var resolverResult = this.resolver(result.path, queryParams);
                 if (resolverResult) {
@@ -281,33 +292,8 @@ var MvcRouter;
     }());
     MvcRouter.Router = Router;
 })(MvcRouter || (MvcRouter = {}));
-var MvcRouter;
-(function (MvcRouter) {
-    var Utils;
-    (function (Utils) {
-        function extend(dest) {
-            var src = [];
-            for (var _i = 1; _i < arguments.length; _i++) {
-                src[_i - 1] = arguments[_i];
-            }
-            for (var _a = 0, src_1 = src; _a < src_1.length; _a++) {
-                var obj = src_1[_a];
-                if (obj) {
-                    for (var field in obj) {
-                        if (obj.hasOwnProperty(field)) {
-                            dest[field] = obj[field];
-                        }
-                    }
-                }
-            }
-            return dest;
-        }
-        Utils.extend = extend;
-    })(Utils = MvcRouter.Utils || (MvcRouter.Utils = {}));
-})(MvcRouter || (MvcRouter = {}));
 /// <reference path="Router.ts" />
 /// <reference path="Controller.ts" />
-/// <reference path="Utils.ts" />
 var MvcRouter;
 (function (MvcRouter) {
     /**
@@ -323,7 +309,7 @@ var MvcRouter;
                 throw new Error("App instance exists; use getInstance() instead.");
             }
             App.instance = this;
-            this.options = MvcRouter.Utils.extend({}, DefaultAppSettings, options);
+            this.options = __assign({}, DefaultAppSettings, options);
             if (!this.options.appBody) {
                 var el = document.createElement('div');
                 document.body.appendChild(el);

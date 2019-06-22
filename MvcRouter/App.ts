@@ -1,6 +1,5 @@
 ﻿/// <reference path="Router.ts" />
 /// <reference path="Controller.ts" />
-/// <reference path="Utils.ts" />
 
 namespace MvcRouter {
     /**
@@ -20,7 +19,7 @@ namespace MvcRouter {
                 throw new Error("App instance exists; use getInstance() instead.");
             }
             App.instance = this;
-            this.options = Utils.extend({}, DefaultAppSettings, options);
+            this.options = { ...DefaultAppSettings, ...options };
             if (!this.options.appBody) {
                 const el = document.createElement('div');
                 document.body.appendChild(el);

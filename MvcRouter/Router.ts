@@ -79,7 +79,7 @@ namespace MvcRouter {
         public loadController(): void {
             const result = this.parseLocation();
             let { controllerClass, queryParams } = this.resolvePath(result.path);
-            queryParams = Utils.extend({}, result.query, queryParams);
+            queryParams = { ...result.query, ...queryParams };
             if (!controllerClass && this.resolver && result.path) {
                 const resolverResult = this.resolver(result.path, queryParams);
                 if (resolverResult) {

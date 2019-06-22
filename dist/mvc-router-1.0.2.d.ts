@@ -121,9 +121,6 @@ declare namespace MvcRouter {
         queryParams?: QueryParams;
     }
 }
-declare namespace MvcRouter.Utils {
-    function extend(dest: any, ...src: any[]): any;
-}
 declare namespace MvcRouter {
     /**
      * This is the root object of the application.

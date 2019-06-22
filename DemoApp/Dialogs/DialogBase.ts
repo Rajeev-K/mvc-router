@@ -1,17 +1,24 @@
 ﻿import { KeyCodes } from "../Controls/KeyCodes";
+import * as DOMUtils from "../Utils/DOMUtils";
 
 /** Base class for modal dialogs. */
 export class DialogBase {
-    protected $el: JQuery;
-    private $mask: JQuery;
-    private $okButton: JQuery;
-    private $cancelButton: JQuery;
-    private $closeButton: JQuery;
-    private dfd = $.Deferred();
+    protected el: HTMLDivElement;
+    private mask: HTMLElement;
+    private okButton: HTMLButtonElement;
+    private cancelButton: HTMLButtonElement;
+    private closeButton: HTMLButtonElement;
+    private reject: () => void;
+    private resolve: () => void;
 
     constructor() {
-        this.$mask = $('<div class="dialog-mask"></div>').appendTo(document.body);
-        this.$el = $('<div class="dialog"></div>').appendTo(this.$mask);
+        this.mask = document.createElement("div");
+        this.mask.classList.add("dialog-mask");
+        document.body.appendChild(this.mask);
+
+        this.el = document.createElement("div");
+        this.el.classList.add("dialog");
+        this.mask.appendChild(this.el);
     }
 
     /**
@@ -22,29 +29,35 @@ export class DialogBase {
     }
 
     protected init(): void {
-        this.$okButton = this.$el.find(".ok-button");
-        this.$cancelButton = this.$el.find(".cancel-button");
-        this.$closeButton = this.$el.find(".close-button");
+        this.okButton = this.el.querySelector(".ok-button");
+        this.cancelButton = this.el.querySelector(".cancel-button");
+        this.closeButton = this.el.querySelector(".close-button");
         this.centerDialog();
         this.attachEventHandlers();
-        window.setTimeout(() => this.$okButton.focus(), 0);
+        window.setTimeout(() => this.okButton.focus(), 0);
     }
 
     protected attachEventHandlers(): void {
-        this.$okButton.click(() => this.onOK());
-        this.$cancelButton.click(() => this.onCancel());
-        this.$closeButton.click(() => this.onCancel());
-        this.$el.keydown(ev => this.onKeyDown(ev));
+        if (this.okButton) {
+            this.okButton.addEventListener("click", () => this.onOK());
+        }
+        if (this.cancelButton) {
+            this.cancelButton.addEventListener("click", () => this.onCancel());
+        }
+        if (this.closeButton) {
+            this.closeButton.addEventListener("click", () => this.onCancel());
+        }
+        this.el.addEventListener("keydown", ev => this.onKeyDown(ev));
     }
 
-    protected onKeyDown(ev: JQueryKeyEventObject): void {
-        switch (ev.which) {
+    protected onKeyDown(ev: KeyboardEvent): void {
+        switch (ev.keyCode) {
             case KeyCodes.Enter:
                 this.onEnterKeyPressed();
                 ev.preventDefault();
                 break;
             case KeyCodes.Escape:
-                if (this.$cancelButton.is(":visible")) {
+                if (DOMUtils.isVisible(this.cancelButton)) {
                     this.onEscapeKeyPressed();
                 }
                 ev.preventDefault();
@@ -63,31 +76,35 @@ export class DialogBase {
     }
 
     private centerDialog(): void {
-        let t = ($(window).height() - this.$el.height()) / 3;
-        let l = ($(window).width() - this.$el.width()) / 2;
+        let t = (window.innerHeight - this.el.offsetHeight) / 3;
+        let l = (window.innerWidth - this.el.offsetWidth) / 2;
         t = Math.max(0, t);
         l = Math.max(0, l);
-        this.$el.css({ top: t, left: l });
+        this.el.style.top = t + 'px';
+        this.el.style.left = l + 'px';
     }
 
-    public showDialog(): JQueryPromise<any> {
+    public showDialog(): Promise<any> {
         this.render();
-        return this.dfd.promise();
+        return new Promise((resolve, reject) => {
+            this.resolve = resolve;
+            this.reject = reject;
+        });
     }
 
     private closeDialog(): void {
-        this.$el.remove();
-        this.$mask.remove();
+        this.el.remove();
+        this.mask.remove();
     }
 
     protected onCancel(): void {
         this.closeDialog();
-        this.dfd.reject();
+        this.reject();
     }
 
     /** Handles OK button. Override this method and get user input, then call this base class method. */
     protected onOK(): void {
         this.closeDialog();
-        this.dfd.resolve();
+        this.resolve();
     }
 }

@@ -7,7 +7,7 @@ export class MessageBox extends DialogBase {
 
     constructor(options: MessageBoxOptions) {
         super();
-        this.options = $.extend({}, DefaultMessageBoxOptions, options);
+        this.options = { ...DefaultMessageBoxOptions, ...options };
     }
 
     protected render(): void {
@@ -18,7 +18,7 @@ export class MessageBox extends DialogBase {
             message: this.message
         };
         const element = React.createElement(MessageBoxPanel, props);
-        ReactDOM.render(element, this.$el.get(0), () => {
+        ReactDOM.render(element, this.el, () => {
             this.init();
         });
     }
@@ -29,14 +29,14 @@ export class MessageBox extends DialogBase {
     }
 
     /** Static method for displaying a simple message. */
-    public static show(message: string): JQueryPromise<any> {
+    public static show(message: string): Promise<any> {
         const mb = new MessageBox({ hideCancelButton: true });
         mb.message = message;
         return mb.showDialog();
     }
 
     /** Static method for asking the user a yes/no question. OK/Cancel buttons are relabeled to Yes/No. */
-    public static ask(title: string, message: string): JQueryPromise<any> {
+    public static ask(title: string, message: string): Promise<any> {
         const mb = new MessageBox({ okButtonLabel: "Yes", cancelButtonLabel: "No" });
         mb.message = message;
         return mb.showDialog();

@@ -1,8 +1,16 @@
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 /*! repo location: https://github.com/Rajeev-K/mvc-router */
 var MvcRouter;
 (function (MvcRouter) {
@@ -14,7 +22,7 @@ var MvcRouter;
      *
      * You can have a hierarchy of controllers, with parts that are common to all pages rendered by the base controller.
      */
-    var Controller = (function () {
+    var Controller = /** @class */ (function () {
         function Controller() {
             this.loaded = false;
         }
@@ -24,6 +32,7 @@ var MvcRouter;
          * responsible for rendering the entire page, not just the portions that have changed.
          * In your override of the load method you can start by clearing the current page contents:
          *    $(this.app.getAppBody()).empty().off();
+         * Your override should call the base class method.
          */
         Controller.prototype.load = function (params) {
             this.loaded = true;
@@ -52,7 +61,7 @@ var MvcRouter;
         return Controller;
     }());
     MvcRouter.Controller = Controller;
-    var PageNotFoundController = (function (_super) {
+    var PageNotFoundController = /** @class */ (function (_super) {
         __extends(PageNotFoundController, _super);
         function PageNotFoundController() {
             return _super !== null && _super.apply(this, arguments) || this;
@@ -72,7 +81,7 @@ var MvcRouter;
      * happens inside your app. You must associate paths with controllers when your application starts.
      * Each time the user navigates to a specific path/page a new instance of the controller will be created.
      */
-    var Router = (function () {
+    var Router = /** @class */ (function () {
         function Router(app) {
             var _this = this;
             this.routes = {};
@@ -114,7 +123,7 @@ var MvcRouter;
                     for (i = 0; i < routeSegments.length; i++) {
                         if (routeSegments[i][0] === ':') {
                             var name_1 = routeSegments[i].substring(1);
-                            queryParms[name_1] = pathSegments[i];
+                            queryParms[name_1] = decodeURIComponent(pathSegments[i]);
                         }
                         else if (routeSegments[i] !== pathSegments[i]) {
                             break;
@@ -305,7 +314,7 @@ var MvcRouter;
      * This is the root object of the application.
      * Do not use this class directly, make your own subclass instead.
      */
-    var App = (function () {
+    var App = /** @class */ (function () {
         /**
          * Constructor.
          */

@@ -9,7 +9,7 @@ export class TransactionController extends ControllerBase {
     private accountType: number;
     private depositing: boolean;
     private account: Account;
-    private component: React.Component<TransactionPageProps, TransactionPageState>;
+    private transactionPage: TransactionPage;
 
     constructor(app: BankApp) {
         super(app);
@@ -18,24 +18,31 @@ export class TransactionController extends ControllerBase {
     protected loadPage(params: MvcRouter.QueryParams): void {
         // Get data based on query parameters
         this.accountType = parseInt(params["type"], 10);
-        this.account = this.app.getBank().getAccount(this.accountType);
         this.depositing = (params["mode"] === "deposit");
 
         // Render page
         const props: TransactionPageProps = {
-            labels: this.depositing ? TransactionController.depositLabels : TransactionController.withdrawalLabels,
-            accountName: this.account.getName()
+            labels: this.depositing ? depositLabels : withdrawalLabels,
+            onOkClicked: () => this.onOkClicked(),
+            onCancelClicked: () => this.onCancelClicked(),
+            ref: component => {
+                if (component) {
+                    this.transactionPage = component;
+                }
+            }
         };
-        const element = React.createElement<TransactionPageProps>(TransactionPage, props);
-        this.component = ReactDOM.render<TransactionPageProps, TransactionPageState>(element, this.$pageContainer.get(0), () => {
-            this.attachPageEventHandlers();
+        ReactDOM.render(React.createElement(TransactionPage, props), this.pageContainer, () => {
+            this.initPage();
         });
-        this.component.setState({ balance: this.account.getBalance() });
     }
 
-    private attachPageEventHandlers(): void {
-        this.$pageContainer.on('click', '.ok-button', () => this.onOkClicked());
-        this.$pageContainer.on('click', '.cancel-button', () => this.onCancelClicked());
+    private initPage(): void {
+        // do ajax calls here
+        this.account = this.app.getBank().getAccount(this.accountType);
+        this.transactionPage.setState({
+            accountName: this.account.getName(),
+            balance: this.account.getBalance()
+        });
     }
 
     private onOkClicked(): void {
@@ -48,28 +55,26 @@ export class TransactionController extends ControllerBase {
     }
 
     private performDeposit(): void {
-        const amountStr = this.$pageContainer.find('.amount-input').val();
-        const amount = parseInt(amountStr, 10);
+        const amount = this.transactionPage.getAmount();
         this.account.depositMoney(amount);
 
         Storage.store(AccountType[this.accountType], this.account.getBalance().toString());
 
-        this.component.setState({ balance: this.account.getBalance() });
-        MessageBox.show("Amount deposited.").done(() => {
+        this.transactionPage.setState({ balance: this.account.getBalance() });
+        MessageBox.show("Amount deposited.").then(() => {
             this.app.navigate("/");
         });
     }
 
     private performWithdrawal(): void {
-        const amountStr = this.$pageContainer.find('.amount-input').val();
-        const amount = parseInt(amountStr, 10);
+        const amount = this.transactionPage.getAmount();
         try {
             this.account.withdrawMoney(amount);
 
             Storage.store(AccountType[this.accountType], this.account.getBalance().toString());
 
-            this.component.setState({ balance: this.account.getBalance() });
-            MessageBox.show("Amount withdrawn.").done(() => {
+            this.transactionPage.setState({ balance: this.account.getBalance() });
+            MessageBox.show("Amount withdrawn.").then(() => {
                 this.app.navigate("/");
             });
         }
@@ -81,14 +86,14 @@ export class TransactionController extends ControllerBase {
     private onCancelClicked(): void {
         this.app.navigate(`/account/${this.accountType}`);
     }
-
-    private static depositLabels: TransactionPageLabels = {
-        transactionType: "Deposit",
-        prompt: "How much do you want to deposit?"
-    };
-
-    private static withdrawalLabels: TransactionPageLabels = {
-        transactionType: "Withdrawal",
-        prompt: "How much do you want to withdraw?"
-    };
 }
+
+const depositLabels: TransactionPageLabels = {
+    transactionType: "Deposit",
+    prompt: "How much do you want to deposit?"
+};
+
+const withdrawalLabels: TransactionPageLabels = {
+    transactionType: "Withdrawal",
+    prompt: "How much do you want to withdraw?"
+};

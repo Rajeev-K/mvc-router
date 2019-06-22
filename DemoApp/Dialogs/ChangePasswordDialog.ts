@@ -21,15 +21,15 @@ export class ChangePasswordDialog extends DialogBase {
 
     protected render(): void {
         const element = React.createElement(ChangePasswordPanel, {});
-        ReactDOM.render(element, this.$el.get(0), () => {
+        ReactDOM.render(element, this.el, () => {
             this.init();
         });
     }
 
     public onOK(): void {
         // Get new values from dialog controls.
-        this.oldPassword = this.$el.find('.old-password-input').val();
-        this.newPassword = this.$el.find('.new-password-input').val();
+        this.oldPassword = (this.el.querySelector('.old-password-input') as HTMLInputElement).value;
+        this.newPassword = (this.el.querySelector('.new-password-input') as HTMLInputElement).value;
 
         super.onOK();
     }

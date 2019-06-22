@@ -1,30 +1,36 @@
 ﻿import { ControllerBase } from "./ControllerBase";
 import { BankApp } from "../BankApp";
 import { MessageBox } from "../Dialogs/MessageBox";
-import { SupportPage } from "../Views/SupportPage";
+import { SupportPage, SupportPageProps, SupportPageState } from "../Views/SupportPage";
 
 export class SupportController extends ControllerBase {
-    private $textArea: JQuery;
+    private supportPage: SupportPage;
 
     constructor(app: BankApp) {
         super(app);
     }
 
     protected loadPage(params: MvcRouter.QueryParams): void {
-        var element = React.createElement(SupportPage, {});
-        ReactDOM.render(element, this.$pageContainer.get(0), () => {
-            this.$textArea = this.$pageContainer.find('textarea');
-            this.attachPageEventHandlers();
+        const props: SupportPageProps = {
+            onSendButtonClicked: () => this.onSendButtonClicked(),
+            ref: component => {
+                if (component) {
+                    this.supportPage = component;
+                }
+            }
+        };
+        ReactDOM.render(React.createElement(SupportPage, props), this.pageContainer, () => {
+            this.initPage();
         });
     }
 
-    private attachPageEventHandlers(): void {
-        this.$pageContainer.on('click', '.send-button', () => this.onSendButtonClicked());
+    private initPage(): void {
+        // do ajax calls here
     }
 
     private onSendButtonClicked(): void {
-        MessageBox.show("Message has been sent!").done(() => {
-            this.$textArea.val('');
+        MessageBox.show("Message has been sent!").then(() => {
+            this.supportPage.setState({ message: '' });
             this.app.navigate("/");
         });
     }

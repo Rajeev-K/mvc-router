@@ -4,6 +4,8 @@
     "module": "amd",
     "out": "Generated/app.js",
     "sourceMap": true,
-    "jsx": "react"
+    "jsx": "react",
+    "lib": [ "es6", "dom" ],
+    "skipLibCheck": true
   }
 }

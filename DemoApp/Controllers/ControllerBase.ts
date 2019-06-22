@@ -1,5 +1,5 @@
 ﻿import { BankApp } from "../BankApp";
-import { MasterPage } from "../Views/MasterPage";
+import { MasterPage, MasterPageProps } from "../Views/MasterPage";
 import { MessageBox } from "../Dialogs/MessageBox";
 import { ChangePasswordDialog } from "../Dialogs/ChangePasswordDialog";
 import { DropdownMenu } from "../Controls/DropdownMenu";
@@ -9,7 +9,8 @@ import { DropdownMenu } from "../Controls/DropdownMenu";
  * Here we render parts common to all pages, and handle events in those parts.
  */
 export class ControllerBase extends MvcRouter.Controller {
-    protected $pageContainer: JQuery;
+    private masterPage: MasterPage;
+    protected pageContainer: HTMLElement;
 
     constructor(public app: BankApp) {
         super();
@@ -17,40 +18,34 @@ export class ControllerBase extends MvcRouter.Controller {
 
     public load(params: MvcRouter.QueryParams): void {
         super.load(params);
-        $(this.app.getAppBody()).off();
 
         // Render page
-        const element = React.createElement(MasterPage, {});
-        ReactDOM.render(element, this.app.getAppBody(), () => {
-            this.attachMasterPageEventHandlers();
-            this.$pageContainer = $(this.app.getAppBody()).find('.page-container');
-            this.$pageContainer.off();
+        const props: MasterPageProps = {
+            onServicesClicked: (ev) => this.onServicesClicked(ev),
+            onSignoutClicked: () => this.onSignOutClicked(),
+            ref: component => {
+                if (component) {
+                    this.masterPage = component;
+                }
+            }
+        };
+        ReactDOM.render(React.createElement(MasterPage, props), this.app.getAppBody(), () => {
+            this.pageContainer = this.app.getAppBody().querySelector('.page-container');
             this.loadPage(params);
         });
-    }
-
-    private attachMasterPageEventHandlers(): void {
-        const $appBody = $(this.app.getAppBody());
-        $appBody.on('click', '.services', ev => this.onServicesClicked(ev));
-        $appBody.on('click', '.sign-out', () => this.onSignOutClicked());
     }
 
     /** Loads content page. Subclasses should override. */
     protected loadPage(params: MvcRouter.QueryParams): void {
     }
 
-    private onServicesClicked(ev: JQueryEventObject): void {
-        // Add menu to DOM and position it
-        const $menu = $("<div></div>").appendTo(this.app.getAppBody());
-        const servicesOffset = $(ev.target).offset();
-        $menu.css({ left: servicesOffset.left, top: (servicesOffset.top + 32) });
+    private onServicesClicked(ev: React.MouseEvent): void {
+        const anchor = ev.target as HTMLElement;
 
         // Display commands in the menu
         const commands = this.getCommands();
-        const menu = new DropdownMenu($menu, { items: commands });
-        $menu.get(0).addEventListener('ItemSelected', (e: CustomEvent) => {
-            // Execute the selected command
-            commands[e.detail.selectedItemIndex].action();
+        new DropdownMenu(anchor, commands, { verticalOffset: 5, parent: this.app.getAppBody() }, selectedItemIndex => {
+            commands[selectedItemIndex].action();
         });
     }
 
@@ -60,9 +55,9 @@ export class ControllerBase extends MvcRouter.Controller {
 
     public onChangePassword(): void {
         const dialog = new ChangePasswordDialog();
-        dialog.showDialog().done(() => {
+        dialog.showDialog().then(() => {
             MessageBox.show("Your password has been updated.");
-        });
+        }).catch(() => null);
     }
 
     /** Gets commands to be displayed in a menu. */

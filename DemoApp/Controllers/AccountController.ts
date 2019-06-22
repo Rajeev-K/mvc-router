@@ -1,11 +1,12 @@
 ﻿import { ControllerBase } from "./ControllerBase";
 import { Account } from "../Models/Account";
 import { BankApp } from "../BankApp";
-import { AccountPageProps, AccountPage } from "../Views/AccountPage";
+import { AccountPageProps, AccountPage, AccountPageState } from "../Views/AccountPage";
 
 export class AccountController extends ControllerBase {
     private accountType: number;
     private account: Account;
+    private accountPage: AccountPage;
 
     constructor(app: BankApp) {
         super(app);
@@ -18,17 +19,22 @@ export class AccountController extends ControllerBase {
 
         // Render page.
         const props: AccountPageProps = {
-            account: this.account
+            account: this.account,
+            onDepositClicked: () => this.onDepositClicked(),
+            onWithdrawClicked: () => this.onWithdrawClicked(),
+            ref: component => {
+                if (component) {
+                    this.accountPage = component;
+                }
+            }
         };
-        const element = React.createElement(AccountPage, props);
-        ReactDOM.render(element, this.$pageContainer.get(0), () => {
-            this.attachPageEventHandlers();
+        ReactDOM.render(React.createElement(AccountPage, props), this.pageContainer, () => {
+            this.initPage();
         });
     }
 
-    private attachPageEventHandlers(): void {
-        this.$pageContainer.on('click', '.widthdraw-button', () => this.onWithdrawClicked());
-        this.$pageContainer.on('click', '.deposit-button', () => this.onDepositClicked());
+    private initPage(): void {
+        // do ajax calls here
     }
 
     private onDepositClicked(): void {

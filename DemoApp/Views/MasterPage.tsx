@@ -1,4 +1,6 @@
-﻿export interface MasterPageProps {
+﻿export interface MasterPageProps extends React.Props<MasterPage> {
+    onServicesClicked: (ev: React.MouseEvent) => void;
+    onSignoutClicked: () => void;
 }
 
 export interface MasterPageState {
@@ -11,8 +13,8 @@ export class MasterPage extends React.Component<MasterPageProps, MasterPageState
                 <div className="header">
                     <div className="company-name"><a href="/" className="appnav">Mega Bank</a></div>
                     <div className="rhs">
-                        <div className="services">Services</div>
-                        <div className="sign-out">Sign Out</div>
+                        <div className="services" onClick={this.props.onServicesClicked}>Services</div>
+                        <div className="sign-out" onClick={this.props.onSignoutClicked}>Sign Out</div>
                     </div>
                 </div>
                 <div className="leftnav">

@@ -8,15 +8,15 @@ export class GenericDialog<P> extends DialogBase {
 
     constructor(private componentClass: React.ComponentClass<P>, private props: P, options?: GenericDialogOptions) {
         super();
-        this.options = $.extend({}, DefaultGenericDialogOptions, options);
+        this.options = { ...DefaultGenericDialogOptions, ...options };
         if (this.options.dialogClass) {
-            this.$el.addClass(this.options.dialogClass);
+            this.el.classList.add(this.options.dialogClass);
         }
     }
 
     protected render(): void {
         const element = React.createElement(this.componentClass, this.props);
-        ReactDOM.render(element, this.$el[0], () => {
+        ReactDOM.render(element, this.el, () => {
             this.init();
         });
     }

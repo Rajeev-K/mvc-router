@@ -5,14 +5,14 @@
     <title>Mega Bank</title>
     <link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">
     <link href="/Assets/app.css" rel="stylesheet" type="text/css" />
-    <script src="/Libs/jquery-3.1.1.js"></script>
-    <script src="/Libs/react-15.4.1.js"></script>
-    <script src="/Libs/react-dom-15.4.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.js"></script>
+    <script src="/Libs/react-16.8.js"></script>
+    <script src="/Libs/react-dom-16.8.js"></script>
     <script src="/Libs/mvc-router-1.0.2.js"></script>
     <script src="/Libs/require.js"></script>
     <script src="/Libs/polyfills.js"></script>
     <script>
-        $(function () {
+        window.onload = function () {
             require.config({
                 paths: {
                     BankApp: '/Generated/app'
@@ -21,7 +21,7 @@
             require(['BankApp'], function (module) {
                 new module.BankApp(document.getElementById('app-body'));
             });
-        });
+        };
     </script>
 </head>
 <body>

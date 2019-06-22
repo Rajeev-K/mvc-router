@@ -89,7 +89,10 @@ If `appnav` is specified then MVC Router will use HTML5 pushState API to perform
 
 - You can also programmatically navigate to another page by calling `this.app.navigate('/new/path')` in your controller. Internally, MVC Router uses HTML5 pushState API to perform the navigation.
 
+# Comparison to React Router
+React Router is a popular router specifically designer for React. It is very easy to set up routes and nested components in React Router. But that's where the ease-of-use ends. Setting up pages that need authentication is hard. Nested components have no easy way to communicate with each other. If a nested component wants to listen to an event sent by an element in an outer component there is no easy way to do that. Calling a method implemented by an outer component is hard. In MVC all these things are incredibly easy because you have a controller hierarchy that matches the view nesting. Want to hide an element dislayed in the master page? Just call a base class method. Want to be notified when a button in the master page is clicked? Just override a base class method!
+
 # Demo App
-Included demo application has a master page that includes a top bar and left panel, dropdown menu, dialogs and other goodies.
+Included demo application uses React.js in the View layer, and has a master page that includes a top bar and left panel, dropdown menu, dialogs and other goodies.
 
 ![Demo App](/images/screenshot.png?raw=true "Screenshot")

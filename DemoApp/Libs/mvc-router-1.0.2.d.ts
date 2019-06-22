@@ -16,6 +16,7 @@ declare namespace MvcRouter {
          * responsible for rendering the entire page, not just the portions that have changed.
          * In your override of the load method you can start by clearing the current page contents:
          *    $(this.app.getAppBody()).empty().off();
+         * Your override should call the base class method.
          */
         load(params: QueryParams): void;
         /**
@@ -70,13 +71,13 @@ declare namespace MvcRouter {
          * Returns the controller corresponding to the path, and parameters that are embedded in the path (aka dynamic segments).
          * @param path The path portion of the URL. Example: /customers/123 will match the route /customers/:customer_id
          */
-        private resolvePath(path);
+        private resolvePath;
         /** Loads the controller corresponding to the browser's current location. */
         loadController(): void;
         /** Loads the supplied controller and sets it as the current controller. */
-        private loadNewController(controllerClass, query);
+        private loadNewController;
         /** Restores location to its previous value. */
-        private restoreLocation();
+        private restoreLocation;
         /**
          * Replaces query parameters in the browser's location without reloading the page.
          * @param query new query parameters
@@ -90,9 +91,9 @@ declare namespace MvcRouter {
         setHash(hash: string): void;
         getHash(): string;
         /** Constructs the query string from the supplied name value pairs. */
-        private constructQueryString(query);
+        private constructQueryString;
         /** Parses the query string. */
-        private parseQuery(q);
+        private parseQuery;
         /** Gets the path and query parameters of the current page. */
         parseLocation(): {
             path: string;
@@ -103,9 +104,9 @@ declare namespace MvcRouter {
         /** This enables your App subclass to talk to the currently active controller. */
         getCurrentController(): Controller;
         /** Handles clicks on all <a class="appnav"></a> elements in app body. */
-        private clickHandler(ev);
+        private clickHandler;
         /** Handles popstate event. */
-        private onPopState(ev);
+        private onPopState;
     }
     interface QueryParams {
         [index: string]: string;

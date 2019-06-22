@@ -11,7 +11,6 @@ export class HomeController extends ControllerBase {
         const props: HomePageProps = {
             accounts: this.app.getBank().getAccounts()
         };
-        const element = React.createElement(HomePage, props);
-        ReactDOM.render(element, this.$pageContainer.get(0));
+        ReactDOM.render(React.createElement(HomePage, props), this.pageContainer);
     }
 }

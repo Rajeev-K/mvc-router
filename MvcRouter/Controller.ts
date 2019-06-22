@@ -18,6 +18,7 @@ namespace MvcRouter {
          * responsible for rendering the entire page, not just the portions that have changed.
          * In your override of the load method you can start by clearing the current page contents:
          *    $(this.app.getAppBody()).empty().off();
+         * Your override should call the base class method.
          */
         public load(params: QueryParams): void {
             this.loaded = true;

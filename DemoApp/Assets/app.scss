@@ -208,23 +208,23 @@ input[type="text"], input[type="password"] {
 
 .dialog-mask {
     z-index: $z-dialog-mask;
-	background-color: rgba(0, 0, 0, 0.3);
-	position: fixed;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .dialog {
     position: absolute;
-	border: 1px solid #999;
+    border: 1px solid #999;
     padding: 10px;
     background-color: white;
 
     .button-panel {
-	    margin-top: 25px;
-	    text-align: right;
+        margin-top: 25px;
+        text-align: right;
 
         button {
             margin-left: 7px;
@@ -233,7 +233,7 @@ input[type="text"], input[type="password"] {
 }
 
 .message-box {
-	width: 350px;
+    width: 350px;
 }
 
 .change-password {

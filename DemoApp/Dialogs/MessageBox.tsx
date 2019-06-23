@@ -1,5 +1,4 @@
 ﻿import { DialogBase } from "./DialogBase";
-import { MessageBoxPanelProps, MessageBoxPanel } from "../Views/MessageBox";
 
 export class MessageBox extends DialogBase {
     public message: string;
@@ -54,3 +53,24 @@ const DefaultMessageBoxOptions: MessageBoxOptions = {
     okButtonLabel: 'OK',
     cancelButtonLabel: 'Cancel'
 };
+
+interface MessageBoxPanelProps {
+    message: string;
+    hideCancelButton: boolean;
+    okButtonLabel: string;
+    cancelButtonLabel: string;
+}
+
+function MessageBoxPanel(props: MessageBoxPanelProps): JSX.Element {
+    const cancelButton = props.hideCancelButton ?
+        null : <button type="button" className="cancel-button">{props.cancelButtonLabel}</button>
+    return (
+        <div className="message-box">
+            <div className="message-box-message">{props.message}</div>
+            <div className="button-panel">
+                <button type="button" className="ok-button default-button">{props.okButtonLabel}</button>
+                {cancelButton}
+            </div>
+        </div>
+    );
+}

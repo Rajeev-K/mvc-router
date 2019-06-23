@@ -37,8 +37,6 @@
     <TypeScriptCompile Include="typings\react\react-global.d.ts" />
     <TypeScriptCompile Include="Views\AccountPage.tsx" />
     <TypeScriptCompile Include="Views\HomePage.tsx" />
-    <TypeScriptCompile Include="Views\DropdownMenu.tsx" />
-    <TypeScriptCompile Include="Views\ChangePassword.tsx" />
     <TypeScriptCompile Include="Views\MasterPage.tsx" />
     <TypeScriptCompile Include="Views\TransactionPage.tsx" />
     <Content Include="Libs\mvc-router-1.0.2.js" />
@@ -53,7 +51,6 @@
   <ItemGroup>
     <Content Include="Assets\app.scss" />
     <TypeScriptCompile Include="Views\SupportPage.tsx" />
-    <TypeScriptCompile Include="Views\MessageBox.tsx" />
     <Content Include="tsconfig.json" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
@@ -69,11 +66,11 @@
     <TypeScriptCompile Include="Controllers\HomeController.ts" />
     <TypeScriptCompile Include="Controllers\SupportController.ts" />
     <TypeScriptCompile Include="Controllers\TransactionController.ts" />
-    <TypeScriptCompile Include="Controls\DropdownMenu.ts" />
+    <TypeScriptCompile Include="Controls\DropdownMenu.tsx" />
     <TypeScriptCompile Include="Controls\KeyCodes.ts" />
-    <TypeScriptCompile Include="Dialogs\ChangePasswordDialog.ts" />
+    <TypeScriptCompile Include="Dialogs\ChangePasswordDialog.tsx" />
     <TypeScriptCompile Include="Dialogs\DialogBase.ts" />
-    <TypeScriptCompile Include="Dialogs\MessageBox.ts" />
+    <TypeScriptCompile Include="Dialogs\MessageBox.tsx" />
     <TypeScriptCompile Include="typings\react\react.d.ts" />
     <TypeScriptCompile Include="Models\Account.ts" />
     <TypeScriptCompile Include="Models\Bank.ts" />

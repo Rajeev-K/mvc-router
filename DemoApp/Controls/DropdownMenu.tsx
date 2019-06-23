@@ -1,5 +1,4 @@
 ﻿import { KeyCodes } from "./Keycodes";
-import { DropdownMenuPanel } from "../Views/DropdownMenu";
 import * as DOMUtils from "../Utils/DOMUtils";
 
 // Css classes
@@ -138,3 +137,14 @@ export const DefaultDropdownMenuOptions: DropdownMenuOptions = {
     verticalOffset: 0,
     parent: document.body
 };
+
+interface DropdownMenuPanelProps {
+    items: string[];
+}
+
+function DropdownMenuPanel(props: DropdownMenuPanelProps) {
+    const items = props.items.map((item, i) => <div key={i} className="menu-item">{item}</div>);
+    return (
+        <div>{items}</div>
+    );
+}

@@ -1,0 +1,31 @@
+{
+    "name": "demoapp",
+    "version": "0.0.1",
+    "description": "Demo app for mvc-router",
+    "scripts": {
+        "start:dev": "webpack-dev-server --history-api-fallback"
+    },
+    "author": "rajeev-k",
+    "license": "MIT",
+    "devDependencies": {
+        "@types/react": "^16.8.20",
+        "@types/react-dom": "^16.8.4",
+        "aspnet-webpack": "^3.0.0",
+        "css-loader": "^3.0.0",
+        "node-sass": "^4.12.0",
+        "sass-loader": "^7.1.0",
+        "style-loader": "^0.23.1",
+        "ts-loader": "^6.0.2",
+        "typescript": "^3.5.2",
+        "url-loader": "^2.0.0",
+        "webpack": "^4.35.0",
+        "webpack-cli": "^3.3.3",
+        "webpack-dev-middleware": "^3.7.0",
+        "webpack-dev-server": "^3.7.2",
+        "webpack-hot-middleware": "^2.25.0"
+    },
+    "dependencies": {
+        "react": "^16.8.6",
+        "react-dom": "^16.8.6"
+    }
+}

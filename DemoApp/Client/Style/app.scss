@@ -1,0 +1,246 @@
+﻿// sizes
+$header-height: 60px;
+$leftnav-width: 245px;
+
+// fonts
+$base-font: 'Segoe UI', Arial, Helvetica, sans-serif;
+
+// colors
+$brand-color: #0072c6;
+$button-background: #ddd;
+$dark-copy: #404040;
+
+// z-indices
+$z-header: 900;
+$z-dropdown: 901;
+$z-dialog-mask: 999;
+
+body {
+    margin: 0;
+    font-family: $base-font;
+}
+
+h1, h2, h3, h4 {
+    color: $dark-copy;
+}
+
+a {
+    color: #0769ad;
+}
+
+button {
+    font-family: $base-font;
+    font-size: 16px;
+    height: 40px;
+    min-width: 120px;
+    border: 0;
+    background-color: $button-background;
+    &:hover {
+        background-color: lighten($button-background, 5%);
+    }
+
+    &.default-button {
+        background-color: $brand-color;
+        color: white;
+        &:hover {
+            background-color: lighten($brand-color, 10%);
+        }
+    }
+}
+
+.button-bar {
+    margin-top: 15px;
+
+    button {
+        margin-right: 15px;
+    }
+}
+
+input[type="text"], input[type="password"] {
+    font-size: 14px;
+}
+
+.accounts-table {
+    border-collapse: collapse;
+    th {
+        color: $dark-copy;
+        text-align: left;
+    }
+    td:nth-child(1) {
+        min-width: 350px;
+    }
+    td:nth-child(2) {
+        text-align: right;
+    }
+    th, td {
+        padding: 8px 0 8px 0;
+    }
+    th {
+        padding-bottom: 12px;
+    }
+    tr {
+        border-bottom: solid 1px #bbb;
+    }
+    a {
+        text-decoration: none;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.header {
+    position: fixed;
+    width: 100%;
+    box-sizing: border-box;
+    height: $header-height;
+    background-color: $brand-color;
+    color: white;
+    z-index: $z-header;
+    .company-name {
+        display: inline-block;
+        font-size: 34px;
+        font-family: 'Patua One', 'Segoe UI', serif;
+        padding: 8px 20px 8px 30px;
+        width: $leftnav-width;
+        height: $header-height;
+        background-color: darken($brand-color, 3%);
+        border-right: solid 1px darken($brand-color, 5%);
+        box-sizing: border-box;
+        a {
+            color: white;
+            text-decoration: none;
+            cursor: default;
+        }
+    }
+    .rhs {
+        float: right;
+        margin: 20px 20px 0 0;
+    }
+    .sign-out {
+        display: inline-block;
+        cursor: pointer;
+    }
+    .services {
+        display: inline-block;
+        cursor: pointer;
+        margin-right: 110px;
+        &::after {
+            content: '';
+            display: inline-block;
+            position: relative;
+            left: 7px;
+            top: 0px;
+            background-image: url(caretdown.png);
+            width: 8px;
+            height: 8px;
+        }
+    }
+}
+
+.transaction-page {
+    .input-panel {
+        margin-top: 12px;
+
+        input {
+            border: solid 1px #999;
+            padding: 3px;
+        }
+    }
+}
+
+.support-page {
+    textarea {
+        margin-top: 8px;
+        margin-bottom: 20px;
+        border: solid 1px $brand-color;
+        overflow: hidden;
+    }
+}
+
+.leftnav {
+    position: fixed;
+    display: inline-block;
+    width: $leftnav-width;
+    height: 100%;
+    margin-top: $header-height;
+    padding-top: 30px;
+    box-sizing: border-box;
+    background-color: #f3f3f3;
+    border-right: solid 1px #e7e7e7;
+    div {
+        margin: 10px 0 20px 30px;
+    }
+    a {
+        font-size: 18px;
+        text-decoration: none;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.page-container {
+    margin-top: $header-height;
+    margin-left: $leftnav-width;
+    padding-left: 40px;
+    display: inline-block;
+}
+
+.dropdown-menu {
+    position: absolute;
+    background-color: white;
+    cursor: default;
+    box-shadow: 0px 1px 3px #666;
+    outline: 0;
+    z-index: $z-dropdown;
+    padding: 10px 0 10px 0;
+
+    .menu-item {
+        padding: 5px 20px 6px 20px;
+
+        &.highlight {
+            color: white;
+            background-color: lighten($brand-color, 10%);
+        }
+    }
+}
+
+.dialog-mask {
+    z-index: $z-dialog-mask;
+    background-color: rgba(0, 0, 0, 0.3);
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.dialog {
+    position: absolute;
+    border: 1px solid #999;
+    padding: 15px;
+    background-color: white;
+
+    .button-panel {
+        margin-top: 25px;
+        text-align: right;
+
+        button {
+            margin-left: 7px;
+        }
+    }
+}
+
+.message-box {
+    width: 350px;
+}
+
+.change-password {
+    input[type="password"] {
+        border: 1px solid #999;
+        margin-bottom: 5px;
+        padding: 5px;
+        width: 330px;
+    }
+}

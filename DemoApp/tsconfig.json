@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "noEmitOnError": true,
+        "removeComments": false,
+        "skipLibCheck": true,
+        "sourceMap": true,
+        "moduleResolution": "node",
+        "forceConsistentCasingInFileNames": true,
+        "noImplicitThis": true,
+        "lib": [ "es5", "dom", "dom.iterable", "es2015.promise" ],
+        "target": "es5",
+        "module": "esnext",
+        "jsx": "react",
+        "outDir": "dist"
+    },
+    "exclude": [
+        "node_modules",
+        "wwwroot"
+    ]
+}

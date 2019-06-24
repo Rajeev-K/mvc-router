@@ -1,143 +1,32 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <ProjectGuid>{040723E0-1A77-48F2-9F8B-523BFFB9B974}</ProjectGuid>
-    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
-    <OutputType>Library</OutputType>
-    <OutputPath>bin</OutputPath>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <DebugType>full</DebugType>
-    <DebugSymbols>true</DebugSymbols>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
     <TypeScriptToolsVersion>3.4</TypeScriptToolsVersion>
-    <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
-    <IISExpressAnonymousAuthentication />
-    <IISExpressWindowsAuthentication />
-    <IISExpressUseClassicPipelineMode />
-    <UseGlobalApplicationHostFile />
-    <Use64BitIISExpress />
   </PropertyGroup>
+
   <ItemGroup>
-    <Content Include="Assets\caretdown.png" />
-    <Content Include="Generated\app.js" />
-    <Content Include="Global.asax" />
-    <Content Include="gulpfile.js" />
-    <Content Include="index.html" />
-    <None Include="README.md" />
-    <Content Include="Assets\app.css">
-      <DependentUpon>app.scss</DependentUpon>
-    </Content>
-    <TypeScriptCompile Include="Dialogs\GenericDialog.ts" />
-    <TypeScriptCompile Include="Libs\mvc-router-1.0.2.d.ts" />
-    <TypeScriptCompile Include="Utils\DOMUtils.ts" />
-    <TypeScriptCompile Include="Utils\Storage.ts" />
-    <TypeScriptCompile Include="typings\react\react-dom.d.ts" />
-    <TypeScriptCompile Include="typings\react\react-global.d.ts" />
-    <TypeScriptCompile Include="Views\AccountPage.tsx" />
-    <TypeScriptCompile Include="Views\HomePage.tsx" />
-    <TypeScriptCompile Include="Views\MasterPage.tsx" />
-    <TypeScriptCompile Include="Views\TransactionPage.tsx" />
-    <Content Include="Libs\mvc-router-1.0.2.js" />
-    <Content Include="Libs\polyfills.js" />
-    <Content Include="Libs\react-16.8.js" />
-    <Content Include="Libs\react-16.8.min.js" />
-    <Content Include="Libs\react-dom-16.8.js" />
-    <Content Include="Libs\react-dom-16.8.min.js" />
-    <Content Include="Libs\require.js" />
-    <Content Include="web.config" />
+    <Compile Remove="Client\components\**" />
+    <Content Remove="Client\components\**" />
+    <EmbeddedResource Remove="Client\components\**" />
+    <None Remove="Client\components\**" />
   </ItemGroup>
+
   <ItemGroup>
-    <Content Include="Assets\app.scss" />
-    <TypeScriptCompile Include="Views\SupportPage.tsx" />
-    <Content Include="tsconfig.json" />
-    <None Include="web.Debug.config">
-      <DependentUpon>web.config</DependentUpon>
-    </None>
-    <None Include="web.Release.config">
-      <DependentUpon>web.config</DependentUpon>
-    </None>
+    <None Remove="App.ts" />
+    <None Remove="Client\declarations.d.ts" />
+    <None Remove="Client\Utils\DomUtils.ts" />
+    <None Remove="Client\Utils\StringUtils.ts" />
+    <None Remove="KeyCodes.ts" />
   </ItemGroup>
+
   <ItemGroup>
-    <TypeScriptCompile Include="BankApp.ts" />
-    <TypeScriptCompile Include="Controllers\AccountController.ts" />
-    <TypeScriptCompile Include="Controllers\ControllerBase.ts" />
-    <TypeScriptCompile Include="Controllers\HomeController.ts" />
-    <TypeScriptCompile Include="Controllers\SupportController.ts" />
-    <TypeScriptCompile Include="Controllers\TransactionController.ts" />
-    <TypeScriptCompile Include="Controls\DropdownMenu.tsx" />
-    <TypeScriptCompile Include="Controls\KeyCodes.ts" />
-    <TypeScriptCompile Include="Dialogs\ChangePasswordDialog.tsx" />
-    <TypeScriptCompile Include="Dialogs\DialogBase.ts" />
-    <TypeScriptCompile Include="Dialogs\MessageBox.tsx" />
-    <TypeScriptCompile Include="typings\react\react.d.ts" />
-    <TypeScriptCompile Include="Models\Account.ts" />
-    <TypeScriptCompile Include="Models\Bank.ts" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.6" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.4" />
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
+    <TypeScriptCompile Include="Client\Utils\DOMUtils.ts" />
   </ItemGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Web" />
-  </ItemGroup>
-  <ItemGroup />
-  <PropertyGroup>
-    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
-  </PropertyGroup>
-  <PropertyGroup>
-    <RootNamespace>BankDemo</RootNamespace>
-  </PropertyGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets')" />
-  <ProjectExtensions>
-    <VisualStudio>
-      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
-        <WebProjectProperties>
-          <UseIIS>True</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>54270</DevelopmentServerPort>
-          <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:54270/</IISUrl>
-          <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
-          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
-        </WebProjectProperties>
-      </FlavorProperties>
-    </VisualStudio>
-  </ProjectExtensions>
-  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
-    <TypeScriptRemoveComments>false</TypeScriptRemoveComments>
-    <TypeScriptSourceMap>true</TypeScriptSourceMap>
-    <TypeScriptOutFile>Generated\demo.js</TypeScriptOutFile>
-    <TypeScriptTarget>ES5</TypeScriptTarget>
-    <TypeScriptJSXEmit>React</TypeScriptJSXEmit>
-    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
-    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
-    <TypeScriptModuleKind>None</TypeScriptModuleKind>
-    <TypeScriptOutDir />
-    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
-    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
-    <TypeScriptMapRoot />
-    <TypeScriptSourceRoot />
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
-    <TypeScriptRemoveComments>true</TypeScriptRemoveComments>
-    <TypeScriptSourceMap>false</TypeScriptSourceMap>
-  </PropertyGroup>
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
-  <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
-  </PropertyGroup>
-  <PropertyGroup>
-    <PreBuildEvent>copy $(SolutionDir)dist\* $(ProjectDir)Libs\.
-</PreBuildEvent>
-  </PropertyGroup>
+
 </Project>

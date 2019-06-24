@@ -1,5 +1,6 @@
 ﻿import * as React from "react";
 import * as ReactDOM from "react-dom";
+import * as MvcRouter from "mvc-router-spa";
 import { ControllerBase } from "./ControllerBase";
 import { AccountType, Account } from "../Models/Account";
 import { BankApp } from "../BankApp";

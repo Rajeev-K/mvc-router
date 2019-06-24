@@ -1,5 +1,6 @@
 ﻿import * as React from "react";
 import * as ReactDOM from "react-dom";
+import * as MvcRouter from "mvc-router-spa";
 import { BankApp } from "../BankApp";
 import { MasterPage, MasterPageProps } from "../Views/MasterPage";
 import { MessageBox } from "../Dialogs/MessageBox";

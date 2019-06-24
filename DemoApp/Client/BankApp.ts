@@ -1,4 +1,5 @@
-﻿import { Bank } from "./Models/Bank";
+﻿import * as MvcRouter from "mvc-router-spa";
+import { Bank } from "./Models/Bank";
 import { AccountType, Account } from "./Models/Account";
 import { HomeController } from "./Controllers/HomeController";
 import { AccountController } from "./Controllers/AccountController";

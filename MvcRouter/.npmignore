@@ -1,0 +1,5 @@
+!dist/
+*.csproj
+*.ts
+!*.d.ts
+tsconfig.json

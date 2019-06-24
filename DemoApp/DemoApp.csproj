@@ -29,8 +29,4 @@
     <TypeScriptCompile Include="Client\Utils\DOMUtils.ts" />
   </ItemGroup>
 
-  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="copy $(SolutionDir)dist\*.d.ts $(ProjectDir)Client\Libs\.&#xD;&#xA;copy $(SolutionDir)dist\*.js $(ProjectDir)wwwroot\.&#xD;&#xA;&#xD;&#xA;" />
-  </Target>
-
 </Project>

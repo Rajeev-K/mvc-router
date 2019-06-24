@@ -22,6 +22,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="App.ts" />
     <TypeScriptCompile Include="Controller.ts" />
+    <TypeScriptCompile Include="MvcRouter.ts" />
     <TypeScriptCompile Include="Router.ts" />
   </ItemGroup>
   <ItemGroup>

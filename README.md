@@ -1,6 +1,14 @@
 # MVC Router
 A JavaScript library for building Web applications using the Model-View-Controller (MVC) design pattern.
 
+## Install
+
+To add MVC Router to your application:
+
+```
+npm install mvc-router-spa --save-dev
+```
+
 ## Why MVC?
 MVC is a proven technology that has withstood the test of time. Applications built using this pattern tend to be simpler and more maintainable.
 

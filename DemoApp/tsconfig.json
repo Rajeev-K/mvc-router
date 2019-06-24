@@ -9,7 +9,7 @@
         "noImplicitThis": true,
         "lib": [ "es5", "dom", "dom.iterable", "es2015.promise" ],
         "target": "es5",
-        "module": "esnext",
+        "module": "commonjs",
         "jsx": "react",
         "outDir": "dist"
     },

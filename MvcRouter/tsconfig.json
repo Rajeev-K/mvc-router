@@ -1,7 +1,10 @@
 ﻿{
-  "compileOnSave": true,
-  "compilerOptions": {
-    "out": "../dist/mvc-router-1.0.2.js",
-    "declaration": true
-  }
+    "compileOnSave": true,
+    "compilerOptions": {
+        "sourceMap": true,
+        "outDir": "dist",
+        "module": "commonjs",
+        "target": "es5",
+        "declaration": true
+    }
 }

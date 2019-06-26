@@ -1,6 +1,6 @@
 {
   "name": "mvc-router-spa",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "MVC router for Single Page Applications",
   "main": "./dist/MvcRouter.js",
   "types": "./dist/MvcRouter.d.ts",

@@ -12,7 +12,7 @@ npm install mvc-router-spa --save-dev
 ## Why MVC?
 MVC is a proven technology that has withstood the test of time. Applications built using this pattern tend to be simpler and more maintainable.
 
-MVC is a common and familiar pattern used by many frameworks, for building Web as well as native apps. If you are an iOS developer you may already be familiar with [MVC in Cocoa](https://developer.apple.com/library/content/documentation/General/Conceptual/DevPedia-CocoaCore/MVC.html).
+MVC is a common and familiar pattern used by many frameworks, for building Web as well as native apps. If you are an iOS developer you may already be familiar with [MVC in Cocoa](https://developer.apple.com/library/archive/documentation/General/Conceptual/CocoaEncyclopedia/Model-View-Controller/Model-View-Controller.html). Most UI frameworks, including ASP.NET Core, JSP and JSF (Java based frameworks), and Ruby on Rails (Python) are all based on MVC. That's no accident --- MVC is the best architecture for UI, yes, even for React applications.
 
 ## Parts of an MVC application
 A typical MVC application has the following parts:
@@ -97,10 +97,10 @@ If `appnav` is specified then MVC Router will use HTML5 pushState API to perform
 
 - You can also programmatically navigate to another page by calling `this.app.navigate('/new/path')` in your controller. Internally, MVC Router uses HTML5 pushState API to perform the navigation.
 
-# Comparison to React Router
+## Comparison to React Router
 React Router is a popular router specifically designer for React. It is very easy to set up routes and nested components in React Router. But that's where the ease-of-use ends. Setting up pages that need authentication is hard. Nested components have no easy way to communicate with each other. If a nested component wants to listen to an event sent by an element in an outer component there is no easy way to do that. Calling a method implemented by an outer component is hard. In MVC all these things are incredibly easy because you have a controller hierarchy that matches the view nesting. Want to hide an element dislayed in the master page? Just call a base class method. Want to be notified when a button in the master page is clicked? Just override a base class method!
 
-# Demo App
+## Demo App
 Included demo application uses React.js in the View layer, and has a master page that includes a top bar and left panel, dropdown menu, dialogs and other goodies.
 
 ![Demo App](/images/screenshot.png?raw=true "Screenshot")

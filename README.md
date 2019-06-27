@@ -12,7 +12,7 @@ npm install mvc-router-spa --save-dev
 ## Why MVC?
 MVC is a proven technology that has withstood the test of time. Applications built using this pattern tend to be simpler and more maintainable.
 
-MVC is a common and familiar pattern used by many frameworks, for building Web as well as native apps. If you are an iOS developer you may already be familiar with [MVC in Cocoa](https://developer.apple.com/library/archive/documentation/General/Conceptual/CocoaEncyclopedia/Model-View-Controller/Model-View-Controller.html). Most UI frameworks, including ASP.NET Core, JSP and JSF (Java based frameworks), and Ruby on Rails (Python) are all based on MVC. That's no accident --- MVC is the best architecture for UI, yes, even for React applications.
+MVC is a common and familiar pattern used by many frameworks, for building Web as well as native apps. If you are an iOS developer you may already be familiar with [MVC in Cocoa](https://developer.apple.com/library/archive/documentation/General/Conceptual/CocoaEncyclopedia/Model-View-Controller/Model-View-Controller.html). Most UI frameworks, including ASP.NET Core, JSP and JSF (Java based frameworks), Ruby on Rails, and Django (Python) are all based on MVC. That's no accident. These disparate platforms &mdash; mobile and Web &mdash; all converged on MVC because it is the best architectural pattern for developing user interfaces.
 
 ## Parts of an MVC application
 A typical MVC application has the following parts:

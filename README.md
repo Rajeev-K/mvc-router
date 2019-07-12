@@ -14,6 +14,8 @@ MVC is a proven technology that has withstood the test of time. Applications bui
 
 MVC is a common and familiar pattern used by many frameworks, for building Web as well as native apps. If you are an iOS developer you may already be familiar with [MVC in Cocoa](https://developer.apple.com/library/archive/documentation/General/Conceptual/CocoaEncyclopedia/Model-View-Controller/Model-View-Controller.html). Most UI frameworks, including ASP.NET Core, JSP and JSF (Java based frameworks), Ruby on Rails, and Django (Python) are all based on MVC. That's no accident. These disparate platforms &mdash; mobile and Web &mdash; all converged on MVC because it is the best architectural pattern for developing user interfaces.
 
+When using React to implement views, MVC supports one-way data flow. Unlike other technologies such as Flux/Redux, MVC requires far less boilerplate code.
+
 ## Parts of an MVC application
 A typical MVC application has the following parts:
 - The Application object holds application state and sets up routes.

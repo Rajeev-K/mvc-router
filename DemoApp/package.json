@@ -13,7 +13,7 @@
         "aspnet-webpack": "^3.0.0",
         "css-loader": "^3.0.0",
         "mvc-router-spa": "^1.0.3",
-        "node-sass": "^4.12.0",
+        "node-sass": "^7.0.0",
         "sass-loader": "^7.1.0",
         "style-loader": "^0.23.1",
         "ts-loader": "^6.0.2",

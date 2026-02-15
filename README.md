@@ -12,7 +12,7 @@ npm install mvc-router-spa --save
 ## Why MVC?
 MVC is a proven technology that has withstood the test of time. Applications built using this pattern tend to be simpler and more maintainable.
 
-MVC is a common and familiar pattern used by many frameworks, for building Web as well as native apps. If you are an iOS developer you may already be familiar with [MVC in Cocoa](https://developer.apple.com/library/archive/documentation/General/Conceptual/CocoaEncyclopedia/Model-View-Controller/Model-View-Controller.html). Most UI frameworks, including ASP.NET Core, JSP and JSF (Java based frameworks), Ruby on Rails, and Django (Python) are all based on MVC. That's no accident. These disparate platforms &mdash; mobile and Web &mdash; all converged on MVC because it is the best architectural pattern for developing user interfaces.
+MVC is a common and familiar pattern used by many frameworks for building both web and native applications. If you are an iOS developer, you may already be familiar with [MVC in Cocoa](https://developer.apple.com/library/archive/documentation/General/Conceptual/CocoaEncyclopedia/Model-View-Controller/Model-View-Controller.html). Most UI frameworks &mdash; including ASP.NET Core, Spring MVC (often used via Spring Boot), Ruby on Rails, and Django &mdash; are built around MVC or a close variation of it. This is not accidental. Across mobile and web platforms, MVC emerged as a practical way to separate concerns and structure user-interface code.
 
 When using React to implement views, MVC supports one-way data flow. Other technologies such as Flux/Redux also implement one-way data flow, but MVC requires far less boilerplate code. MVC also offers better separation of concerns, which is a good idea to adopt [even in Flux/Redux apps](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0).
 
@@ -100,7 +100,7 @@ If `appnav` is specified then MVC Router will use HTML5 pushState API to perform
 - You can also programmatically navigate to another page by calling `this.app.navigate('/new/path')` in your controller. Internally, MVC Router uses HTML5 pushState API to perform the navigation.
 
 ## Comparison to React Router
-In React Router parts of a page are implemented as components that own not only appearance but also behavior. These components are independent instead of being parts of a whole. Communication between parts of a page, while possible, is contrived and requires setup.
+In React Router, parts of a page are implemented as components that encapsulate both presentation and behavior. Behavior is distributed across the component tree. While components compose structurally, coordinating behavior across them requires explicit mechanisms such as prop drilling, context, or shared state stores.
 
 In MVC the entire page is handled by a single controller. Even though multiple components are used to _render_ the page, the behavior is in a single controller, with functionality common to multiple pages being handled by a base controller. Communication between parts of the page is natural. Accessing functionality owned by an outer component is as simple as calling a base class method. Listening to events in an outer component is as simple as overriding a base class method.
 
@@ -108,6 +108,6 @@ In MVC the entire page is handled by a single controller. Even though multiple c
 
 For a real-world application written using MVC Router see [eureka!](https://github.com/Rajeev-K/eureka)
 
-The included demo application uses React.js in the View layer, and has a master page that includes a top bar and left panel, dropdown menu, dialogs and other goodies.
+The included demo application uses React.js in the View layer, and has a master page that includes a top bar and left panel, dropdown menu, and dialogs.
 
 ![Demo App](/images/screenshot.png?raw=true "Screenshot")

@@ -1,8 +1,7 @@
-import * as React from "react";
 import { createRoot, Root } from "react-dom/client";
 import * as MvcRouter from "mvc-router-spa";
 import { BankApp } from "../BankApp";
-import { MasterPage, MasterPageProps } from "../Views/MasterPage";
+import { MasterPage, MasterPageProps, createMasterPage } from "../Views/MasterPage";
 import { MessageBox } from "../Dialogs/MessageBox";
 import { ChangePasswordDialog } from "../Dialogs/ChangePasswordDialog";
 import { DropdownMenu } from "../Controls/DropdownMenu";
@@ -39,7 +38,7 @@ export class ControllerBase extends MvcRouter.Controller {
                 }
             }
         };
-        this.app.getRoot().render(React.createElement(MasterPage, props));
+        this.app.getRoot().render(createMasterPage(props));
     }
 
     /** Loads content page. Subclasses should override. */

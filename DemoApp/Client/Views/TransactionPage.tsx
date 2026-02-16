@@ -63,3 +63,7 @@ export class TransactionPage extends React.Component<TransactionPageProps, Trans
         );
     }
 }
+
+export function createTransactionPage(props: TransactionPageProps): React.ReactNode {
+    return <TransactionPage {...props} />;
+}

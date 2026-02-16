@@ -35,3 +35,7 @@ export class HomePage extends React.Component<HomePageProps, HomePageState> {
         );
     }
 }
+
+export function createHomePage(props: HomePageProps): React.ReactNode {
+    return <HomePage {...props} />;
+}

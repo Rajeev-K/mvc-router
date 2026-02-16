@@ -38,3 +38,7 @@ export class SupportPage extends React.Component<SupportPageProps, SupportPageSt
         );
     }
 }
+
+export function createSupportPage(props: SupportPageProps): React.ReactNode {
+    return <SupportPage {...props} />;
+}

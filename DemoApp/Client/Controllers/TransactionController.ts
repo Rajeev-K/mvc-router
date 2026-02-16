@@ -1,4 +1,3 @@
-import * as React from "react";
 import { createRoot } from "react-dom/client";
 import * as MvcRouter from "mvc-router-spa";
 import { ControllerBase } from "./ControllerBase";
@@ -6,7 +5,7 @@ import { AccountType, Account } from "../Models/Account";
 import { BankApp } from "../BankApp";
 import { MessageBox } from "../Dialogs/MessageBox";
 import * as Storage from "../Utils/Storage";
-import { TransactionPageProps, TransactionPage, TransactionPageLabels } from "../Views/TransactionPage";
+import { TransactionPage, TransactionPageProps, createTransactionPage, TransactionPageLabels } from "../Views/TransactionPage";
 
 export class TransactionController extends ControllerBase {
     private accountType: number;
@@ -36,7 +35,7 @@ export class TransactionController extends ControllerBase {
             }
         };
         this.pageRoot = createRoot(this.pageContainer);
-        this.pageRoot.render(React.createElement(TransactionPage, props));
+        this.pageRoot.render(createTransactionPage(props));
     }
 
     private initPage(): void {

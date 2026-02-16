@@ -26,3 +26,7 @@ export class AccountPage extends React.Component<AccountPageProps, AccountPageSt
         );
     }
 }
+
+export function createAccountPage(props: AccountPageProps): React.ReactNode {
+    return <AccountPage {...props} />;
+}

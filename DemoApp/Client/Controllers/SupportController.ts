@@ -1,10 +1,9 @@
-import * as React from "react";
 import { createRoot } from "react-dom/client";
 import * as MvcRouter from "mvc-router-spa";
 import { ControllerBase } from "./ControllerBase";
 import { BankApp } from "../BankApp";
 import { MessageBox } from "../Dialogs/MessageBox";
-import { SupportPage, SupportPageProps } from "../Views/SupportPage";
+import { SupportPage, SupportPageProps, createSupportPage } from "../Views/SupportPage";
 
 export class SupportController extends ControllerBase {
     private supportPage: SupportPage;
@@ -24,7 +23,7 @@ export class SupportController extends ControllerBase {
             }
         };
         this.pageRoot = createRoot(this.pageContainer);
-        this.pageRoot.render(React.createElement(SupportPage, props));
+        this.pageRoot.render(createSupportPage(props));
     }
 
     private initPage(): void {

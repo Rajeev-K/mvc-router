@@ -30,3 +30,7 @@ export class MasterPage extends React.Component<MasterPageProps, MasterPageState
         );
     }
 }
+
+export function createMasterPage(props: MasterPageProps): React.ReactNode {
+    return <MasterPage {...props} />;
+}

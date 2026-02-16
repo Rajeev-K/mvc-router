@@ -3,6 +3,7 @@
 export interface MasterPageProps {
     onServicesClicked: (ev: React.MouseEvent) => void;
     onSignoutClicked: () => void;
+    onMounted?: (el: HTMLDivElement) => void;
 }
 
 interface MasterPageState {
@@ -11,7 +12,7 @@ interface MasterPageState {
 export class MasterPage extends React.Component<MasterPageProps, MasterPageState> {
     render() {
         return (
-            <div className="page">
+            <div className="page" ref={this.props.onMounted}>
                 <div className="header">
                     <div className="company-name"><a href="/" className="appnav">Mega Bank</a></div>
                     <div className="rhs">

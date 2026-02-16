@@ -1,4 +1,5 @@
 ﻿import * as MvcRouter from "mvc-router-spa";
+import { createRoot, Root } from "react-dom/client";
 import { Bank } from "./Models/Bank";
 import { AccountType, Account } from "./Models/Account";
 import { HomeController } from "./Controllers/HomeController";
@@ -10,11 +11,14 @@ import "./Style/app.scss";
 
 export class BankApp extends MvcRouter.App {
     private bank;
+    private root: Root;
 
     constructor(appBody: HTMLElement) {
         super({
             appBody: appBody
         });
+
+        this.root = createRoot(appBody);
 
         const router = this.getRouter();
         router.addRoute("/", HomeController);
@@ -23,6 +27,10 @@ export class BankApp extends MvcRouter.App {
         router.addRoute("/support", SupportController);
 
         this.load();
+    }
+
+    public getRoot(): Root {
+        return this.root;
     }
 
     public getBank(): Bank {

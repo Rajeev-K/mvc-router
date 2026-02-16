@@ -1,5 +1,4 @@
 ﻿import * as React from "react";
-import * as ReactDOM from "react-dom";
 import { DialogBase } from "./DialogBase";
 
 // How to use dialogs:
@@ -21,10 +20,7 @@ export class ChangePasswordDialog extends DialogBase {
     }
 
     protected render(): void {
-        const element = React.createElement(ChangePasswordPanel, {});
-        ReactDOM.render(element, this.el, () => {
-            this.init();
-        });
+        this.renderContent(React.createElement(ChangePasswordPanel, {}));
     }
 
     public onOK(): void {

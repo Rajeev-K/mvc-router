@@ -1,5 +1,5 @@
-﻿import * as React from "react";
-import * as ReactDOM from "react-dom";
+import * as React from "react";
+import { createRoot, Root } from "react-dom/client";
 import * as MvcRouter from "mvc-router-spa";
 import { BankApp } from "../BankApp";
 import { MasterPage, MasterPageProps } from "../Views/MasterPage";
@@ -14,6 +14,7 @@ import { DropdownMenu } from "../Controls/DropdownMenu";
 export class ControllerBase extends MvcRouter.Controller {
     private masterPage: MasterPage;
     protected pageContainer: HTMLElement;
+    protected pageRoot: Root;
 
     constructor(public app: BankApp) {
         super();
@@ -26,16 +27,19 @@ export class ControllerBase extends MvcRouter.Controller {
         const props: MasterPageProps & React.ClassAttributes<MasterPage> = {
             onServicesClicked: (ev) => this.onServicesClicked(ev),
             onSignoutClicked: () => this.onSignOutClicked(),
+            onMounted: (el) => {
+                if (el) {
+                    this.pageContainer = el.querySelector('.page-container');
+                    this.loadPage(params);
+                }
+            },
             ref: component => {
                 if (component) {
                     this.masterPage = component;
                 }
             }
         };
-        ReactDOM.render(React.createElement(MasterPage, props), this.app.getAppBody(), () => {
-            this.pageContainer = this.app.getAppBody().querySelector('.page-container');
-            this.loadPage(params);
-        });
+        this.app.getRoot().render(React.createElement(MasterPage, props));
     }
 
     /** Loads content page. Subclasses should override. */
@@ -77,8 +81,9 @@ export class ControllerBase extends MvcRouter.Controller {
     }
 
     public unload(): void {
-        if (this.pageContainer) {
-            ReactDOM.unmountComponentAtNode(this.pageContainer);
+        if (this.pageRoot) {
+            this.pageRoot.unmount();
+            this.pageRoot = null;
         }
         super.unload();
     }

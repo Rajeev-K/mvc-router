@@ -1,5 +1,4 @@
 ﻿import * as React from "react";
-import * as ReactDOM from "react-dom";
 import { DialogBase } from "./DialogBase";
 
 /**
@@ -18,10 +17,7 @@ export class GenericDialog<P> extends DialogBase {
     }
 
     protected render(): void {
-        const element = React.createElement(this.componentClass, this.props);
-        ReactDOM.render(element, this.el, () => {
-            this.init();
-        });
+        this.renderContent(React.createElement(this.componentClass, this.props));
     }
 }
 

@@ -1,5 +1,5 @@
-﻿import * as React from "react";
-import * as ReactDOM from "react-dom";
+import * as React from "react";
+import { createRoot } from "react-dom/client";
 import * as MvcRouter from "mvc-router-spa";
 import { ControllerBase } from "./ControllerBase";
 import { BankApp } from "../BankApp";
@@ -14,6 +14,7 @@ export class HomeController extends ControllerBase {
         const props: HomePageProps = {
             accounts: this.app.getBank().getAccounts()
         };
-        ReactDOM.render(React.createElement(HomePage, props), this.pageContainer);
+        this.pageRoot = createRoot(this.pageContainer);
+        this.pageRoot.render(React.createElement(HomePage, props));
     }
 }

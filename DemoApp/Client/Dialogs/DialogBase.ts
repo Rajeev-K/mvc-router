@@ -1,4 +1,6 @@
-﻿import { KeyCodes } from "../Controls/KeyCodes";
+import * as React from "react";
+import { createRoot, Root } from "react-dom/client";
+import { KeyCodes } from "../Controls/KeyCodes";
 import * as DOMUtils from "../Utils/DOMUtils";
 
 /**
@@ -15,6 +17,7 @@ export class DialogBase {
     private closeButton: HTMLButtonElement;
     private reject: () => void;
     private resolve: (value?: any) => void;
+    private dialogRoot: Root;
 
     constructor() {
         this.mask = document.createElement("div");
@@ -31,6 +34,19 @@ export class DialogBase {
      *  Note: After the dialog elements have been added to the DOM you must call the init() method.
      */
     protected render(): void {
+    }
+
+    /** Renders a React element into the dialog container and calls init() via a ref callback. */
+    protected renderContent(element: React.ReactElement): void {
+        const wrapper = React.createElement('div', {
+            ref: (el: HTMLDivElement) => {
+                if (el) {
+                    this.init();
+                }
+            }
+        }, element);
+        this.dialogRoot = createRoot(this.el);
+        this.dialogRoot.render(wrapper);
     }
 
     protected init(): void {
@@ -98,6 +114,10 @@ export class DialogBase {
     }
 
     private closeDialog(): void {
+        if (this.dialogRoot) {
+            this.dialogRoot.unmount();
+            this.dialogRoot = null;
+        }
         this.el.remove();
         this.mask.remove();
     }

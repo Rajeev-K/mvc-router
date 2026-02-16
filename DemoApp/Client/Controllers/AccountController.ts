@@ -1,5 +1,5 @@
-﻿import * as React from "react";
-import * as ReactDOM from "react-dom";
+import * as React from "react";
+import { createRoot } from "react-dom/client";
 import * as MvcRouter from "mvc-router-spa";
 import { ControllerBase } from "./ControllerBase";
 import { Account } from "../Models/Account";
@@ -28,12 +28,12 @@ export class AccountController extends ControllerBase {
             ref: component => {
                 if (component) {
                     this.accountPage = component;
+                    this.initPage();
                 }
             }
         };
-        ReactDOM.render(React.createElement(AccountPage, props), this.pageContainer, () => {
-            this.initPage();
-        });
+        this.pageRoot = createRoot(this.pageContainer);
+        this.pageRoot.render(React.createElement(AccountPage, props));
     }
 
     private initPage(): void {

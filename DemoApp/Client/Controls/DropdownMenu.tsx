@@ -1,5 +1,5 @@
 ﻿import * as React from "react";
-import * as ReactDOM from "react-dom";
+import { createRoot, Root } from "react-dom/client";
 import { KeyCodes } from "./KeyCodes";
 import * as DOMUtils from "../Utils/DOMUtils";
 
@@ -11,6 +11,7 @@ const HighlightCssClass = "highlight";
 export class DropdownMenu {
     // Private members
     private el: HTMLElement;
+    private menuRoot: Root;
     private ops: DropdownMenuOptions;
 
     /**
@@ -45,7 +46,8 @@ export class DropdownMenu {
         if (items && items.length) {
             const labels = items.map(value => value.toString());
             const element = React.createElement(DropdownMenuPanel, { items: labels });
-            ReactDOM.render(element, this.el);
+            this.menuRoot = createRoot(this.el);
+            this.menuRoot.render(element);
         }
     }
 
@@ -123,6 +125,10 @@ export class DropdownMenu {
         const el = this.el;
         this.el = null;
         if (el) {
+            if (this.menuRoot) {
+                this.menuRoot.unmount();
+                this.menuRoot = null;
+            }
             el.remove();
         }
     }

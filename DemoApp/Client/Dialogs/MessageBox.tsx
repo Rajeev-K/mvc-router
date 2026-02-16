@@ -1,5 +1,4 @@
 ﻿import * as React from "react";
-import * as ReactDOM from "react-dom";
 import { DialogBase } from "./DialogBase";
 
 export class MessageBox extends DialogBase {
@@ -18,10 +17,7 @@ export class MessageBox extends DialogBase {
             hideCancelButton: this.options.hideCancelButton,
             message: this.message
         };
-        const element = React.createElement(MessageBoxPanel, props);
-        ReactDOM.render(element, this.el, () => {
-            this.init();
-        });
+        this.renderContent(React.createElement(MessageBoxPanel, props));
     }
 
     protected init(): void {

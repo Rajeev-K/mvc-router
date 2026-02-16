@@ -1,5 +1,5 @@
-﻿import * as React from "react";
-import * as ReactDOM from "react-dom";
+import * as React from "react";
+import { createRoot } from "react-dom/client";
 import * as MvcRouter from "mvc-router-spa";
 import { ControllerBase } from "./ControllerBase";
 import { BankApp } from "../BankApp";
@@ -19,12 +19,12 @@ export class SupportController extends ControllerBase {
             ref: component => {
                 if (component) {
                     this.supportPage = component;
+                    this.initPage();
                 }
             }
         };
-        ReactDOM.render(React.createElement(SupportPage, props), this.pageContainer, () => {
-            this.initPage();
-        });
+        this.pageRoot = createRoot(this.pageContainer);
+        this.pageRoot.render(React.createElement(SupportPage, props));
     }
 
     private initPage(): void {

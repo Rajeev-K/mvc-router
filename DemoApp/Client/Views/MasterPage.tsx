@@ -1,6 +1,7 @@
 ﻿import * as React from "react";
 
 export interface MasterPageProps {
+    ref?: React.Ref<MasterPage>;
     onServicesClicked: (ev: React.MouseEvent) => void;
     onSignoutClicked: () => void;
     onMounted?: (el: HTMLDivElement) => void;

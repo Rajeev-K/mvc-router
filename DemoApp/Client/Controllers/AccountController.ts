@@ -21,7 +21,7 @@ export class AccountController extends ControllerBase {
         this.account = this.app.getBank().getAccount(this.accountType);
 
         // Render page.
-        const props: AccountPageProps & React.ClassAttributes<AccountPage> = {
+        const props: AccountPageProps = {
             account: this.account,
             onDepositClicked: () => this.onDepositClicked(),
             onWithdrawClicked: () => this.onWithdrawClicked(),

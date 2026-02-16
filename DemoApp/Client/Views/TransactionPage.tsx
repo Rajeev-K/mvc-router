@@ -6,6 +6,7 @@ export interface TransactionPageLabels {
 }
 
 export interface TransactionPageProps {
+    ref?: React.Ref<TransactionPage>;
     labels: TransactionPageLabels;
     onOkClicked: () => void;
     onCancelClicked: () => void;

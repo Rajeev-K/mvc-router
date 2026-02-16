@@ -2,6 +2,7 @@ import * as React from "react";
 import { Account } from "../Models/Account";
 
 export interface AccountPageProps {
+    ref?: React.Ref<AccountPage>;
     account: Account;
     onWithdrawClicked: () => void;
     onDepositClicked: () => void;

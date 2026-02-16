@@ -1,6 +1,7 @@
 import * as React from "react";
 
 export interface SupportPageProps {
+    ref?: React.Ref<SupportPage>;
     onSendButtonClicked: () => void;
 }
 

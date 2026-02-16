@@ -14,7 +14,7 @@ export class SupportController extends ControllerBase {
     }
 
     protected loadPage(params: MvcRouter.QueryParams): void {
-        const props: SupportPageProps & React.ClassAttributes<SupportPage> = {
+        const props: SupportPageProps = {
             onSendButtonClicked: () => this.onSendButtonClicked(),
             ref: component => {
                 if (component) {

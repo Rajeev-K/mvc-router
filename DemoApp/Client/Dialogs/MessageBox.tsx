@@ -59,7 +59,7 @@ interface MessageBoxPanelProps {
     cancelButtonLabel: string;
 }
 
-function MessageBoxPanel(props: MessageBoxPanelProps): JSX.Element {
+function MessageBoxPanel(props: MessageBoxPanelProps): React.ReactNode {
     const cancelButton = props.hideCancelButton ?
         null : <button type="button" className="cancel-button">{props.cancelButtonLabel}</button>
     return (

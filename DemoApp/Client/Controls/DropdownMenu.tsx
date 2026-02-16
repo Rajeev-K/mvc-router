@@ -45,7 +45,7 @@ export class DropdownMenu {
         // Add menu items
         if (items && items.length) {
             const labels = items.map(value => value.toString());
-            const element = React.createElement(DropdownMenuPanel, { items: labels });
+            const element = <DropdownMenuPanel items={labels} />;
             this.menuRoot = createRoot(this.el);
             this.menuRoot.render(element);
         }

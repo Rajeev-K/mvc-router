@@ -20,7 +20,7 @@ export class ChangePasswordDialog extends DialogBase {
     }
 
     protected render(): void {
-        this.renderContent(React.createElement(ChangePasswordPanel, {}));
+        this.renderContent(<ChangePasswordPanel />);
     }
 
     public onOK(): void {

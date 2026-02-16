@@ -17,7 +17,7 @@ export class MessageBox extends DialogBase {
             hideCancelButton: this.options.hideCancelButton,
             message: this.message
         };
-        this.renderContent(React.createElement(MessageBoxPanel, props));
+        this.renderContent(<MessageBoxPanel {...props} />);
     }
 
     protected init(): void {

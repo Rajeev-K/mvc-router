@@ -1,11 +1,10 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
 
 export interface SupportPageProps extends React.Props<SupportPage> {
     onSendButtonClicked: () => void;
 }
 
-export interface SupportPageState {
+interface SupportPageState {
     message?: string;
 }
 

@@ -6,7 +6,7 @@ import { AccountType, Account } from "../Models/Account";
 import { BankApp } from "../BankApp";
 import { MessageBox } from "../Dialogs/MessageBox";
 import * as Storage from "../Utils/Storage";
-import { TransactionPageProps, TransactionPage, TransactionPageState, TransactionPageLabels } from "../Views/TransactionPage";
+import { TransactionPageProps, TransactionPage, TransactionPageLabels } from "../Views/TransactionPage";
 
 export class TransactionController extends ControllerBase {
     private accountType: number;

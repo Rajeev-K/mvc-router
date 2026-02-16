@@ -1,5 +1,4 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
 import { Account } from "../Models/Account";
 
 export interface AccountPageProps extends React.Props<AccountPage> {
@@ -8,7 +7,7 @@ export interface AccountPageProps extends React.Props<AccountPage> {
     onDepositClicked: () => void;
 }
 
-export interface AccountPageState {
+interface AccountPageState {
 }
 
 export class AccountPage extends React.Component<AccountPageProps, AccountPageState> {

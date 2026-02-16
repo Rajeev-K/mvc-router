@@ -4,7 +4,7 @@ import * as MvcRouter from "mvc-router-spa";
 import { ControllerBase } from "./ControllerBase";
 import { BankApp } from "../BankApp";
 import { MessageBox } from "../Dialogs/MessageBox";
-import { SupportPage, SupportPageProps, SupportPageState } from "../Views/SupportPage";
+import { SupportPage, SupportPageProps } from "../Views/SupportPage";
 
 export class SupportController extends ControllerBase {
     private supportPage: SupportPage;

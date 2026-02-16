@@ -1,12 +1,11 @@
 ﻿import * as React from "react";
-import * as ReactDOM from "react-dom";
 import { Account } from "../Models/Account";
 
 export interface HomePageProps {
     accounts: Account[];
 }
 
-export interface HomePageState {
+interface HomePageState {
 }
 
 export class HomePage extends React.Component<HomePageProps, HomePageState> {

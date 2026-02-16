@@ -1,12 +1,11 @@
 ﻿import * as React from "react";
-import * as ReactDOM from "react-dom";
 
 export interface MasterPageProps extends React.Props<MasterPage> {
     onServicesClicked: (ev: React.MouseEvent) => void;
     onSignoutClicked: () => void;
 }
 
-export interface MasterPageState {
+interface MasterPageState {
 }
 
 export class MasterPage extends React.Component<MasterPageProps, MasterPageState> {

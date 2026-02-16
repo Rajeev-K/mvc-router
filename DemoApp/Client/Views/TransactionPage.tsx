@@ -1,5 +1,4 @@
 ﻿import * as React from "react";
-import * as ReactDOM from "react-dom";
 
 export interface TransactionPageLabels {
     transactionType: string;
@@ -12,7 +11,7 @@ export interface TransactionPageProps extends React.Props<TransactionPage> {
     onCancelClicked: () => void;
 }
 
-export interface TransactionPageState {
+interface TransactionPageState {
     accountName?: string;
     balance?: number;
 }

@@ -4,7 +4,7 @@ import * as MvcRouter from "mvc-router-spa";
 import { ControllerBase } from "./ControllerBase";
 import { Account } from "../Models/Account";
 import { BankApp } from "../BankApp";
-import { AccountPageProps, AccountPage, AccountPageState } from "../Views/AccountPage";
+import { AccountPageProps, AccountPage } from "../Views/AccountPage";
 
 export class AccountController extends ControllerBase {
     private accountType: number;

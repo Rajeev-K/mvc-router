@@ -4,6 +4,10 @@ Install dependencies by typing this command in the DemoApp folder:
 
     npm install
 
+Build the .NET project:
+
+    dotnet build
+
 Start the development server by typing this command:
 
     npm run start:dev

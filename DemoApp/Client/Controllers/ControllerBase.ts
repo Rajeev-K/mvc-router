@@ -60,11 +60,12 @@ export class ControllerBase extends MvcRouter.Controller {
         MessageBox.show("Thank you for clicking the sign out button.");
     }
 
-    public onChangePassword(): void {
+    public async onChangePassword(): Promise<void> {
         const dialog = new ChangePasswordDialog();
-        dialog.showDialog().then(() => {
+        try {
+            await dialog.showDialog();
             MessageBox.show("Your password has been updated.");
-        }).catch(() => null);
+        } catch { }
     }
 
     /** Gets commands to be displayed in a menu. */

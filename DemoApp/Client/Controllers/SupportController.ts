@@ -31,10 +31,9 @@ export class SupportController extends ControllerBase {
         // do ajax calls here
     }
 
-    private onSendButtonClicked(): void {
-        MessageBox.show("Message has been sent!").then(() => {
-            this.supportPage.clearMessage();
-            this.app.navigate("/");
-        });
+    private async onSendButtonClicked(): Promise<void> {
+        await MessageBox.show("Message has been sent!");
+        this.supportPage.clearMessage();
+        this.app.navigate("/");
     }
 }

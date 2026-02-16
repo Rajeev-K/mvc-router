@@ -55,19 +55,18 @@ export class TransactionController extends ControllerBase {
         }
     }
 
-    private performDeposit(): void {
+    private async performDeposit(): Promise<void> {
         const amount = this.transactionPage.getAmount();
         this.account.depositMoney(amount);
 
         Storage.store(AccountType[this.accountType], this.account.getBalance().toString());
 
         this.transactionPage.setBalance(this.account.getBalance());
-        MessageBox.show("Amount deposited.").then(() => {
-            this.app.navigate("/");
-        });
+        await MessageBox.show("Amount deposited.");
+        this.app.navigate("/");
     }
 
-    private performWithdrawal(): void {
+    private async performWithdrawal(): Promise<void> {
         const amount = this.transactionPage.getAmount();
         try {
             this.account.withdrawMoney(amount);
@@ -75,9 +74,8 @@ export class TransactionController extends ControllerBase {
             Storage.store(AccountType[this.accountType], this.account.getBalance().toString());
 
             this.transactionPage.setBalance(this.account.getBalance());
-            MessageBox.show("Amount withdrawn.").then(() => {
-                this.app.navigate("/");
-            });
+            await MessageBox.show("Amount withdrawn.");
+            this.app.navigate("/");
         }
         catch (ex) {
             MessageBox.show(ex.message);

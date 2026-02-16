@@ -3,12 +3,13 @@ import * as ReactDOM from "react-dom";
 import { DialogBase } from "./DialogBase";
 
 /**
- * Displays supplied React Component as a dialog.
+ * A reusable dialog that can display any React component without needing to subclass DialogBase.
+ * Pass a component class and its props, and GenericDialog handles the rest.
  */
 export class GenericDialog<P> extends DialogBase {
     private options: GenericDialogOptions;
 
-    constructor(private componentClass: React.ComponentClass<P>, private props: P, options?: GenericDialogOptions) {
+    constructor(private componentClass: React.ComponentType<P>, private props: P, options?: GenericDialogOptions) {
         super();
         this.options = { ...DefaultGenericDialogOptions, ...options };
         if (this.options.dialogClass) {

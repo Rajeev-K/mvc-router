@@ -1,9 +1,12 @@
-﻿import * as React from "react";
-import * as ReactDOM from "react-dom";
-import { KeyCodes } from "../Controls/KeyCodes";
+﻿import { KeyCodes } from "../Controls/KeyCodes";
 import * as DOMUtils from "../Utils/DOMUtils";
 
-/** Base class for modal dialogs. */
+/**
+ * Base class for modal dialogs. In a typical React app, showing a dialog requires managing
+ * an isOpen state variable and rendering the dialog component inline, which clutters the
+ * calling component with dialog lifecycle concerns. This class instead provides a simple
+ * imperative, Promise-based API: call showDialog(), await the result, and move on.
+ */
 export class DialogBase {
     protected el: HTMLDivElement;
     private mask: HTMLElement;

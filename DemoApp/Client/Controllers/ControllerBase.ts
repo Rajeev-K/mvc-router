@@ -75,6 +75,13 @@ export class ControllerBase extends MvcRouter.Controller {
             new Command("Statements")
         ];
     }
+
+    public unload(): void {
+        if (this.pageContainer) {
+            ReactDOM.unmountComponentAtNode(this.pageContainer);
+        }
+        super.unload();
+    }
 }
 
 /** Represents a command to be displayed in a menu. Each command has a label and an action method. */

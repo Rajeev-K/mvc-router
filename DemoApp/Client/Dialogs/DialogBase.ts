@@ -11,7 +11,7 @@ export class DialogBase {
     private cancelButton: HTMLButtonElement;
     private closeButton: HTMLButtonElement;
     private reject: () => void;
-    private resolve: () => void;
+    private resolve: (value?: any) => void;
 
     constructor() {
         this.mask = document.createElement("div");

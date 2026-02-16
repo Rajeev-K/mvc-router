@@ -42,10 +42,8 @@ export class TransactionController extends ControllerBase {
     private initPage(): void {
         // do ajax calls here
         this.account = this.app.getBank().getAccount(this.accountType);
-        this.transactionPage.setState({
-            accountName: this.account.getName(),
-            balance: this.account.getBalance()
-        });
+        this.transactionPage.setAccountName(this.account.getName());
+        this.transactionPage.setBalance(this.account.getBalance());
     }
 
     private onOkClicked(): void {
@@ -63,7 +61,7 @@ export class TransactionController extends ControllerBase {
 
         Storage.store(AccountType[this.accountType], this.account.getBalance().toString());
 
-        this.transactionPage.setState({ balance: this.account.getBalance() });
+        this.transactionPage.setBalance(this.account.getBalance());
         MessageBox.show("Amount deposited.").then(() => {
             this.app.navigate("/");
         });
@@ -76,7 +74,7 @@ export class TransactionController extends ControllerBase {
 
             Storage.store(AccountType[this.accountType], this.account.getBalance().toString());
 
-            this.transactionPage.setState({ balance: this.account.getBalance() });
+            this.transactionPage.setBalance(this.account.getBalance());
             MessageBox.show("Amount withdrawn.").then(() => {
                 this.app.navigate("/");
             });

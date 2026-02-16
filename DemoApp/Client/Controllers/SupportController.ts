@@ -33,7 +33,7 @@ export class SupportController extends ControllerBase {
 
     private onSendButtonClicked(): void {
         MessageBox.show("Message has been sent!").then(() => {
-            this.supportPage.setState({ message: '' });
+            this.supportPage.clearMessage();
             this.app.navigate("/");
         });
     }

@@ -31,6 +31,14 @@ export class TransactionPage extends React.Component<TransactionPageProps, Trans
         return parseInt(this.amountInput.value, 10);
     }
 
+    public setBalance(balance: number): void {
+        this.setState({ balance });
+    }
+
+    public setAccountName(accountName: string): void {
+        this.setState({ accountName });
+    }
+
     public render() {
         return (
             <div className="transaction-page">

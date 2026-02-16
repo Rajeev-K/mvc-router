@@ -16,6 +16,10 @@ export class SupportPage extends React.Component<SupportPageProps, SupportPageSt
         }
     }
 
+    public clearMessage(): void {
+        this.setState({ message: '' });
+    }
+
     private handleChange = event => {
         this.setState({ message: event.target.value });
     };

@@ -14,21 +14,25 @@ export interface TransactionPageProps extends React.Props<TransactionPage> {
 interface TransactionPageState {
     accountName?: string;
     balance?: number;
+    amount?: string;
 }
 
 export class TransactionPage extends React.Component<TransactionPageProps, TransactionPageState> {
-    private amountInput: HTMLInputElement;
-
     constructor(props) {
         super(props);
         this.state = {
             balance: 0,
-            accountName: ''
+            accountName: '',
+            amount: ''
         };
     }
 
+    private handleAmountChange = (event) => {
+        this.setState({ amount: event.target.value });
+    };
+
     public getAmount(): number {
-        return parseInt(this.amountInput.value, 10);
+        return parseInt(this.state.amount, 10);
     }
 
     public setBalance(balance: number): void {
@@ -47,7 +51,7 @@ export class TransactionPage extends React.Component<TransactionPageProps, Trans
                 <br />
                 <div>
                     <div>{this.props.labels.prompt}</div>
-                    <div className="input-panel">$ <input type="text" ref={el => this.amountInput = el} className="amount-input" /></div>
+                    <div className="input-panel">$ <input type="text" className="amount-input" value={this.state.amount} onChange={this.handleAmountChange} /></div>
                 </div>
                 <br />
                 <div className="button-bar">

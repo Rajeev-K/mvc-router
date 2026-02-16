@@ -42,3 +42,13 @@ MVC avoids this by separating concerns along clear boundaries. The controller is
 This separation keeps each layer simple. Views don't need effects, reducers, or subscriptions. Controllers don't need JSX. Shared behavior across pages is handled through controller inheritance rather than wrapper components or context providers. The programming model is object-oriented and familiar to developers coming from server-side MVC frameworks.
 
 React is still fully utilized for rendering &mdash; you get declarative updates, component composition, and the entire React ecosystem within each view. The MVC layer simply provides the structure above it, replacing the ad-hoc patterns that React applications typically evolve on their own.
+
+## Dialogs
+
+Dialogs use a deliberate imperative, Promise-based API rather than the typical React pattern of managing an `isOpen` state variable and rendering the dialog inline. This keeps dialog lifecycle concerns out of the calling component. Instead of cluttering a component with state management, conditional rendering, and callback wiring, the caller simply writes:
+
+```ts
+await dialog.showDialog();
+```
+
+The dialog handles its own rendering, user interaction, and cleanup. The result is calling code that reads sequentially and stays focused on application logic rather than UI plumbing.

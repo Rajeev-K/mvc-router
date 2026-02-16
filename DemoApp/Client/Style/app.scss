@@ -1,4 +1,6 @@
-﻿// sizes
+﻿@use "sass:color";
+
+// sizes
 $header-height: 60px;
 $leftnav-width: 245px;
 
@@ -36,14 +38,14 @@ button {
     border: 0;
     background-color: $button-background;
     &:hover {
-        background-color: lighten($button-background, 5%);
+        background-color: color.adjust($button-background, $lightness: 5%);
     }
 
     &.default-button {
         background-color: $brand-color;
         color: white;
         &:hover {
-            background-color: lighten($brand-color, 10%);
+            background-color: color.adjust($brand-color, $lightness: 10%);
         }
     }
 }
@@ -104,8 +106,8 @@ input[type="text"], input[type="password"] {
         padding: 8px 20px 8px 30px;
         width: $leftnav-width;
         height: $header-height;
-        background-color: darken($brand-color, 3%);
-        border-right: solid 1px darken($brand-color, 5%);
+        background-color: color.adjust($brand-color, $lightness: -3%);
+        border-right: solid 1px color.adjust($brand-color, $lightness: -5%);
         box-sizing: border-box;
         a {
             color: white;
@@ -201,7 +203,7 @@ input[type="text"], input[type="password"] {
 
         &.highlight {
             color: white;
-            background-color: lighten($brand-color, 10%);
+            background-color: color.adjust($brand-color, $lightness: 10%);
         }
     }
 }

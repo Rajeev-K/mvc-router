@@ -51,7 +51,7 @@ module.exports = {
         })
     ],
     devServer: {
-        contentBase: path.join(__dirname, 'wwwroot'),
+        static: path.join(__dirname, 'wwwroot'),
         port: 9000
     }
 };

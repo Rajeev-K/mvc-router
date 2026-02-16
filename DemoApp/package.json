@@ -3,7 +3,7 @@
     "version": "0.0.1",
     "description": "Demo app for mvc-router",
     "scripts": {
-        "start:dev": "webpack-dev-server --history-api-fallback"
+        "start:dev": "webpack serve --history-api-fallback"
     },
     "author": "rajeev-k",
     "license": "MIT",
@@ -19,9 +19,9 @@
         "tslib": "^2.0.0",
         "typescript": "^5.3.3",
         "url-loader": "^4.1.1",
-        "webpack": "^5.89.0",
+        "webpack": "^5.105.2",
         "webpack-cli": "^5.1.4",
-        "webpack-dev-server": "^3.11.0",
+        "webpack-dev-server": "^4.15.2",
         "webpack-inject-plugin": "^1.5.5",
         "webpack-merge": "^4.2.2"
     },

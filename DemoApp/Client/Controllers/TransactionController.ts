@@ -24,7 +24,7 @@ export class TransactionController extends ControllerBase {
         this.depositing = (params["mode"] === "deposit");
 
         // Render page
-        const props: TransactionPageProps = {
+        const props: TransactionPageProps & React.ClassAttributes<TransactionPage> = {
             labels: this.depositing ? depositLabels : withdrawalLabels,
             onOkClicked: () => this.onOkClicked(),
             onCancelClicked: () => this.onCancelClicked(),

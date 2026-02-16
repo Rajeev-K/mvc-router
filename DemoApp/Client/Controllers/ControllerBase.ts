@@ -23,7 +23,7 @@ export class ControllerBase extends MvcRouter.Controller {
         super.load(params);
 
         // Render page
-        const props: MasterPageProps = {
+        const props: MasterPageProps & React.ClassAttributes<MasterPage> = {
             onServicesClicked: (ev) => this.onServicesClicked(ev),
             onSignoutClicked: () => this.onSignOutClicked(),
             ref: component => {

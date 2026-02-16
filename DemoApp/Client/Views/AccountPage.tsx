@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Account } from "../Models/Account";
 
-export interface AccountPageProps extends React.Props<AccountPage> {
+export interface AccountPageProps {
     account: Account;
     onWithdrawClicked: () => void;
     onDepositClicked: () => void;

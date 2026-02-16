@@ -5,7 +5,7 @@ export interface TransactionPageLabels {
     prompt: string;
 }
 
-export interface TransactionPageProps extends React.Props<TransactionPage> {
+export interface TransactionPageProps {
     labels: TransactionPageLabels;
     onOkClicked: () => void;
     onCancelClicked: () => void;

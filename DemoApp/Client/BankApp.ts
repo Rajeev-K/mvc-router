@@ -10,7 +10,7 @@ import * as Storage from "./Utils/Storage";
 import "./Style/app.scss";
 
 export class BankApp extends MvcRouter.App {
-    private bank;
+    private bank: Bank;
     private root: Root;
 
     constructor(appBody: HTMLElement) {

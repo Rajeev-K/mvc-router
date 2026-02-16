@@ -104,6 +104,10 @@ In React Router, parts of a page are implemented as components that encapsulate 
 
 In MVC the entire page is handled by a single controller. Even though multiple components are used to _render_ the page, the behavior is in a single controller, with functionality common to multiple pages being handled by a base controller. Communication between parts of the page is natural. Accessing functionality owned by an outer component is as simple as calling a base class method. Listening to events in an outer component is as simple as overriding a base class method.
 
+React Router can swap just a nested section of the page on navigation, whereas MVC Router renders the full page on each route change. In practice this is rarely a disadvantage &mdash; in traditional web applications, a URL change implies a full page transition, which matches users' expectations.
+
+The main tradeoff is ecosystem: React Router has a larger community and most third-party libraries assume its conventions. MVC Router's strength is simplicity &mdash; not just the framework itself, which is just 500 lines of code, but the applications built with it, which tend to be far simpler than typical React apps due to the clear separation of concerns and centralized controller logic.
+
 ## Demo App
 
 For a real-world application written using MVC Router see [eureka!](https://github.com/Rajeev-K/eureka)

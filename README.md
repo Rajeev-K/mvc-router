@@ -105,7 +105,7 @@ React was originally designed as the V in MVC. From the [React GitHub page](http
 
 > "Lots of people use React as the V in MVC."
 
-This architecture takes that idea seriously. React does one thing exceptionally well: given a set of props, render a UI. SQLPal keeps React in that lane. Views are pure rendering — no API calls, no navigation, no business logic. They receive props and render markup. That's it.
+This architecture takes that idea seriously. React does one thing exceptionally well: given a set of props, render a UI. This architecture keeps React in that lane. Views are pure rendering — no API calls, no navigation, no business logic. They receive props and render markup. That's it.
 
 Controllers own everything else: fetching data, handling user actions, navigating between pages, managing page lifecycle. This is familiar to anyone who has built software in ASP.NET MVC, Rails, Spring MVC, or Django. The pattern is 20+ years old and well understood.
 
